@@ -1,12 +1,21 @@
-<h3>Friends</h3>
-
-<a href="#/addfriend"><button class="btn"><i class="icon-plus"></i> Add friend</button></a>
 
 <div id="friendswrapper">
-        <a ng-click="openFriend(currentUser)"> <i class="icon-home"></i> {{ currentUser.name }}</a>
-        <div ng-repeat="friend in friends">
-            <a ng-click="openFriend(friend)"> <i class="icon-user"></i>{{friend.name}}</a>
-        </div>
+    <a ng-click="openFriend(currentUser)"> <i class="icon-home"></i> {{ currentUser.name }}</a>
+
+    <p>Requests</p>
+    <div ng-repeat="request in requests">
+        <a>{{request}}</a>
+        <p>
+            <a ng-click=acceptRequest(request)> Accept </a>
+        </p>
+        <p>
+            <a ng-click=declineRequest()> Decline </a>
+        </p>
+    </div>
+
+    <div ng-repeat="friend in friends">
+        <a ng-click="openFriend(friend)"> <i class="icon-user"></i>{{friend.name}}</a>
+    </div>
 
 </div>
 

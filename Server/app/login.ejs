@@ -1,0 +1,17 @@
+<% layout('layout') -%>
+
+
+<form action="/login" method="post">
+	<div>
+	<!--Her må navnet være/hete username selv om det egentlig er for emailen (passportjs sin skyld)-->
+	<input type="text" name="username" placeholder="Email"/><br/>
+	</div>
+	<div>
+	<input type="password" name="password" placeholder="Password"/>
+	</div>
+	<div>
+	<input type="submit" value="Submit"/>
+	</div>
+</form>
+
+<a href="/register"><h4>Register</h4></a>

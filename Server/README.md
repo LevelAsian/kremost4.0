@@ -1,5 +1,6 @@
 kremost3.0
 ==========
+Ny layout!
 
 patch - notes v0.0.1
 
@@ -29,3 +30,4 @@ patch - notes v0.0.3
 
 
 nå funker det på heroku
+
