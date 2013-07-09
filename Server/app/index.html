@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>Patch - Update your friends</title>
+    <link rel="stylesheet" href="app/vendor/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="app/css/app.css"/>
+</head>
+<body>
+
+    <div class="container-narrow">
+
+        <div class="masthead">
+            <h4 class="muted header">Patch</h4>
+        </div>
+
+        <hr>
+
+    <a href="#/"><button class="btn">Log out</button></a>
+    <div ng-view> </div>
+    </div>
+
+    <div id="footer">
+
+        <div id="innerfooter">
+                <a href="#/friends"><button class="btn btn-large">Friends</button></a>
+                <a href="#/addstatus"><button class="btn btn-large">New status</button></a>
+        </div>
+    </div>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    -->
+    <script src="app/vendor/js/angular/angular.js"></script>
+    <script src="app/vendor/js/angular/angular-resource.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/services.js"></script>
+    <script src="app/js/controllers.js"></script>
+    <script src="app/js/filters.js"></script>
+    <script src="app/js/directives.js"></script>
+</body>
+</html>

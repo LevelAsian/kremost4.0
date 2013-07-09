@@ -1,0 +1,37 @@
+
+/* Custom container */
+.container-narrow {
+  margin: 0 auto;
+}
+.container-narrow > hr {
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 30px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 48px;
+  line-height: 1;
+}
+
+#footer{
+    Position: absolute;
+    Width: 100%;
+    Bottom: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+#innerfooter {
+    display: inline-block; /* plasserer footer knappene i midten med text-align #hax0r */
+}
+
+.header {
+    text-align: center;
+}
+
+#friendswrapper{
+    margin-left: 5%;
+}

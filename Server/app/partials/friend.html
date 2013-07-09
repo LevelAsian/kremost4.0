@@ -1,0 +1,8 @@
+<div class="span6">
+    <h3>{{friend.name}}'s Status:</h3>
+
+    <!-- orderBy: sorterer baklengs etter dato -->
+    <ul ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true">
+        <p>added: {{status.startdate | date:'h:mma'}} expires:{{status.enddate | date:'h:mma'}} <i class="icon-random"></i> {{status.text}}</p>
+    </ul>
+</div>

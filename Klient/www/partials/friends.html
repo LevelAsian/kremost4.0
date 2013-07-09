@@ -1,0 +1,11 @@
+<h3>Friends</h3>
+
+<a href="#/addfriend"><button class="btn"><i class="icon-plus"></i> Add friend</button></a>
+
+<div id="friendswrapper">
+        <a ng-click="openFriend(currentUser)"> <i class="icon-home"></i> {{ currentUser.name }}</a>
+        <div ng-repeat="friend in friends">
+            <a ng-click="openFriend(friend)"> <i class="icon-user"></i>{{friend.name}}</a>
+        </div>
+</div>
+
