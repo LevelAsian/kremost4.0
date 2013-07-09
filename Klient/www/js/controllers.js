@@ -3,9 +3,12 @@
 angular.module('myApp.controllers', [])
 
     .controller('FriendsCtrl', function($scope, $http, $location, $rootScope) {
+
+
         var currentUser = $rootScope.GlobalCurrentUser;
+
         $scope.currentUser = currentUser;
-        $http.get('http://kremost.herokuapp.com/api/friends/' + currentUser.email).
+        $http.get('/api/friends/' + currentUser.email).
             success(function(friends) {
                 $scope.friends = friends;
             });
@@ -14,7 +17,7 @@ angular.module('myApp.controllers', [])
         };
 
 
-        $http.get('http://kremost.herokuapp.com/api/friend_requests/' + currentUser.email).
+        $http.get('/api/friend_requests/' + currentUser.email).
             success(function(data){
 
                 $scope.requests = data;
@@ -34,23 +37,41 @@ angular.module('myApp.controllers', [])
 
 
 
-            $http.post('http://kremost.herokuapp.com/api/acceptRequest/', $scope.requester)
+            $http.post('/api/acceptRequest/', $scope.requester)
                 .success(function(){
                     console.log("accepted friend req");
                 });
+
+
+        };
+
+        $scope.declineRequest = function(request){
+
+            $scope.requester= {};
+            $scope.requester.currentmail = currentUser.email;
+            $scope.requester.email = request;
+
+            $http.post('/api/declineRequest/', $scope.requester)
+                .success(function(){
+                    console.log("Deleted friend request")
+                })
+
+
         }
+
+
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http) {
 
         $scope.friend = {};
-        $http.get('http://kremost.herokuapp.com/api/friend/' + $routeParams.email).
+        $http.get('/api/friend/' + $routeParams.email).
             success(function(data) {
                 $scope.friend.name = data.name;
                 $scope.friend.statuses = data.statuses;
             });
 
-        $http.post('http://kremost.herokuapp.com/api/deleteoldstatuses/' + $routeParams.email)
+        $http.post('/api/deleteoldstatuses/' + $routeParams.email)
             .success(function(){
 
             })
@@ -61,7 +82,7 @@ angular.module('myApp.controllers', [])
         $scope.user = {};
 
         $scope.submitUser = function() {
-            $http.post('http://kremost.herokuapp.com/api/register/', $scope.user)
+            $http.post('/api/register/', $scope.user)
                 .success(function(data){
                     $location.path('/');
                 })
@@ -74,7 +95,7 @@ angular.module('myApp.controllers', [])
         $scope.status.email = currentUser.email;
 
         $scope.addStatus = function() {
-            $http.post('http://kremost.herokuapp.com/api/addstatus/', $scope.status)
+            $http.post('/api/addstatus/', $scope.status)
                 .success(function(){
                     $location.path('/');
                 });
@@ -96,17 +117,17 @@ angular.module('myApp.controllers', [])
 
 
 
-            $http.get('http://kremost.herokuapp.com/api/queryforusers/' + $scope.friend.friendemail ).
+            $http.get('api/queryforusers/' + $scope.friend.friendemail ).
                 success(function(data){
                     if($scope.friend.friendemail == currentUser.email){
                         $scope.test = "Cannot add yourself as a friend!";
                     } else{
-                        $http.get('http://kremost.herokuapp.com/api/updatefriendlist/' + currentUser.email).
+                        $http.get('/api/updatefriendlist/' + currentUser.email).
                             success(function(User) {
                                 currentUser.friends = User.friends;
                                 if(currentUser.friends.indexOf($scope.friend.friendemail) === -1){
 
-                                    $http.post('http://kremost.herokuapp.com/api/addfriend/', $scope.friend)
+                                    $http.post('/api/addfriend/', $scope.friend)
                                         .success(function(){
                                             $scope.text = "friend request sent";
                                         });
@@ -119,4 +140,5 @@ angular.module('myApp.controllers', [])
                 })
         }
     });
+
 

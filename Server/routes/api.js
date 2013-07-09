@@ -97,12 +97,14 @@ exports.friend = function(req, res) {
 
 exports.addfriend = function(req, res){
 
+    /*              denne skjer når du accepter request istede
     User.update({ email: req.body.CurrentUserMail},
         {$push: {'friends': req.body.friendemail }},
         function(err, user){
             res.send(user);
         }
     );
+    */
 
 
 
@@ -126,6 +128,30 @@ exports.acceptRequest = function(req, res){
         function(err, user){
             res.send(user);
         });
+
+    User.findOne({email: req.body.email}, function(err, docs) {
+        User.update({email: req.body.email},
+            {$push: {"friends": req.body.currentmail}},
+            function(err, docs){
+                res.send(docs);
+            });
+
+    });
+
+    console.log("now deleting start");
+
+    User.update({email: req.body.currentmail}, {$pull: {friend_requests: req.body.email}}, false, true)
+
+
+    console.log("delete finished");
+
+
+};
+
+exports.declineRequest = function(req, res){
+
+    User.update({email: req.body.currentmail}, {$pull: {friend_requests: req.body.email}}, false, true)
+
 };
 
 

@@ -3,7 +3,10 @@
 angular.module('myApp.controllers', [])
 
     .controller('FriendsCtrl', function($scope, $http, $location, $rootScope) {
+
+
         var currentUser = $rootScope.GlobalCurrentUser;
+
         $scope.currentUser = currentUser;
         $http.get('/api/friends/' + currentUser.email).
             success(function(friends) {
@@ -38,7 +41,25 @@ angular.module('myApp.controllers', [])
                 .success(function(){
                     console.log("accepted friend req");
                 });
+
+
+        };
+
+        $scope.declineRequest = function(request){
+
+            $scope.requester= {};
+            $scope.requester.currentmail = currentUser.email;
+            $scope.requester.email = request;
+
+            $http.post('/api/declineRequest/', $scope.requester)
+                .success(function(){
+                    console.log("Deleted friend request")
+                })
+
+
         }
+
+
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http) {

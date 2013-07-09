@@ -825,7 +825,7 @@ function toKeyValue(obj) {
 
 /**
  * We need our custom method because encodeURIComponent is too agressive and doesn't follow
- * http://app.ietf.org/rfc/rfc3986.txt with regards to the character set (pchar) allowed in path
+ * http://www.ietf.org/rfc/rfc3986.txt with regards to the character set (pchar) allowed in path
  * segments:
  *    segment       = *pchar
  *    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
@@ -3229,7 +3229,7 @@ function Browser(window, document, $log, $sniffer) {
         if (isString(value)) {
           cookieLength = (rawDocument.cookie = escape(name) + '=' + escape(value) + ';path=' + cookiePath).length + 1;
 
-          // per http://app.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
+          // per http://www.ietf.org/rfc/rfc2109.txt browser must allow at minimum:
           // - 300 cookies
           // - 20 cookies per unique domain
           // - 4096 bytes per cookie
@@ -9226,7 +9226,7 @@ function createHttpBackend($browser, XHR, $browserDefer, callbacks, rawDocument,
           // https://bugzilla.mozilla.org/show_bug.cgi?id=608735
           // Firefox already patched in nightly. Should land in Firefox 21.
 
-          // CORS "simple response headers" http://app.w3.org/TR/cors/
+          // CORS "simple response headers" http://www.w3.org/TR/cors/
           var value,
               simpleHeaders = ["Cache-Control", "Content-Language", "Content-Type",
                                   "Expires", "Last-Modified", "Pragma"];
@@ -10466,12 +10466,12 @@ var htmlAnchorDirective = valueFn({
  *
  * The buggy way to write it:
  * <pre>
- * <a href="http://app.gravatar.com/avatar/{{hash}}"/>
+ * <a href="http://www.gravatar.com/avatar/{{hash}}"/>
  * </pre>
  *
  * The correct way to write it:
  * <pre>
- * <a ng-href="http://app.gravatar.com/avatar/{{hash}}"/>
+ * <a ng-href="http://www.gravatar.com/avatar/{{hash}}"/>
  * </pre>
  *
  * @element A
@@ -10545,12 +10545,12 @@ var htmlAnchorDirective = valueFn({
  *
  * The buggy way to write it:
  * <pre>
- * <img src="http://app.gravatar.com/avatar/{{hash}}"/>
+ * <img src="http://www.gravatar.com/avatar/{{hash}}"/>
  * </pre>
  *
  * The correct way to write it:
  * <pre>
- * <img ng-src="http://app.gravatar.com/avatar/{{hash}}"/>
+ * <img ng-src="http://www.gravatar.com/avatar/{{hash}}"/>
  * </pre>
  *
  * @element IMG

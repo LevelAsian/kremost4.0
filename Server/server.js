@@ -93,6 +93,7 @@ app.post('/api/comment/', api.comment);
 app.post('/api/register/', api.register);
 app.post('/api/addfriend/', api.addfriend);
 app.post('/api/acceptRequest/', api.acceptRequest);
+app.post('/api/declineRequest/', api.declineRequest);
 app.post('/api/deleteoldstatuses/:email', api.deleteoldstatuses);
 
 app.get('/api/GetOneUser/:email', api.GetOneUser);

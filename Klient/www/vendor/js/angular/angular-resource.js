@@ -186,7 +186,7 @@
          function BuzzController($resource) {
            this.userId = 'googlebuzz';
            this.Activity = $resource(
-             'https://app.googleapis.com/buzz/v1/activities/:userId/:visibility/:activityId/:comments',
+             'https://www.googleapis.com/buzz/v1/activities/:userId/:visibility/:activityId/:comments',
              {alt:'json', callback:'JSON_CALLBACK'},
              {get:{method:'JSONP', params:{visibility:'@self'}}, replies: {method:'JSONP', params:{visibility:'@self', comments:'@comments'}}}
            );
@@ -245,7 +245,7 @@ angular.module('ngResource', ['ng']).
 
     /**
      * We need our custom method because encodeURIComponent is too aggressive and doesn't follow
-     * http://app.ietf.org/rfc/rfc3986.txt with regards to the character set (pchar) allowed in path
+     * http://www.ietf.org/rfc/rfc3986.txt with regards to the character set (pchar) allowed in path
      * segments:
      *    segment       = *pchar
      *    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
