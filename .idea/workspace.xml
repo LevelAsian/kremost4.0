@@ -99,24 +99,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/app/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="25" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="friend.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/app/partials/friend.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,7 +111,7 @@
       <file leaf-file-name="filters.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/app/js/filters.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="13" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,7 +120,7 @@
       <file leaf-file-name="addstatus.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/app/partials/addstatus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="60" selection-start="495" selection-end="495" vertical-scroll-proportion="-6.107143">
+            <state line="12" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="-8.142858">
               <folding />
             </state>
           </provider>
@@ -153,10 +135,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/server.js">
+      <file leaf-file-name="register.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/app/register.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="58" selection-start="3881" selection-end="3881" vertical-scroll-proportion="0.76726055">
+            <state line="17" column="36" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/app/css/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="18" selection-start="171" selection-end="171" vertical-scroll-proportion="0.22941822">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/app/login.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="45" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -381,6 +381,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app7" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kremost4.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -388,7 +410,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Ignored.Files" />
+    <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
@@ -531,23 +553,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Klient/www/partials/friends.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="141" selection-end="141" vertical-scroll-proportion="0.109195404" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Klient/www/js/filters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="20" selection-start="429" selection-end="429" vertical-scroll-proportion="0.27505568" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Klient/www/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="41" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.021158129">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Klient/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="9" selection-start="257" selection-end="257" vertical-scroll-proportion="-1.1428572" />
@@ -584,13 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/app/partials/addstatus.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="60" selection-start="495" selection-end="495" vertical-scroll-proportion="-6.107143">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/routes/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="71" column="7" selection-start="1660" selection-end="1835" vertical-scroll-proportion="0.0">
@@ -600,7 +598,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/app/js/filters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -628,7 +626,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="58" selection-start="3881" selection-end="3881" vertical-scroll-proportion="0.76726055">
+        <state line="101" column="58" selection-start="3881" selection-end="3881" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/partials/addstatus.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="-8.142858">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/login.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="45" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/register.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="36" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="18" selection-start="171" selection-end="171" vertical-scroll-proportion="0.22941822">
           <folding />
         </state>
       </provider>
