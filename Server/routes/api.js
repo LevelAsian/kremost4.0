@@ -93,8 +93,6 @@ exports.comment = function(req, res){
             added: startdate
         }}},
         function(err, docs){
-            //res.send(docs);
-
         }
     )
 }

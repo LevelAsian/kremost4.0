@@ -6,6 +6,10 @@
         <h3>{{status.text}}</h3>
         <p> added: {{status.startdate | date:'H:mm'}} expires:{{status.enddate | date:'H:mm'}} </p>
 
+        <ul ng-repeat="seen in friend.comments | commentFilter: statusmodel:status">
+
+            <p>{{comment.text}} by: {{comment.by}}, added: {{comment.added | date:'H:mm'}} </p>
+        </ul>
 
         <h5 >Comments</h5>
         <ul ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">
