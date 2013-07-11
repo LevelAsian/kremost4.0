@@ -7,24 +7,16 @@
     <link rel="stylesheet" href="app/css/app.css"/>
 </head>
 <body>
-
-<div class="container-narrow">
-
-    <div class="masthead">
-        <h4 class="muted header">Patch</h4>
-        <a href="/logout"><button class="btn" style="float:right;">Log Out</button></a>
-    </div>
-
-    <hr>
-
-
-    <div ng-view> </div>
+<div class="headermain">
+    <a href="/logout" class="headerbutton"><button class="btn" style="display: block">Log Out</button></a>
 </div>
+
+<div ng-view> </div>
 
 <div id="footer">
 
     <div id="innerfooter">
-        <a href="#/friends"><button class="btn-large">Friends</button></a>
+        <a href="#/friends" ><button class="btn-large">Friends</button></a>
         <a href="#/addstatus"><button class="btn-large">New status</button></a>
         <a href="#/addfriend"><button class="btn-large">Add friend</button></a>
     </div>
