@@ -4,6 +4,7 @@ angular.module('myApp.controllers', [])
 
     .controller('FriendsCtrl', function($scope, $http, $location, $rootScope, $route) {
 
+        setTimeout(function(){$route.reload();},1000);
 
         var currentUser = $rootScope.GlobalCurrentUser;
 
@@ -96,18 +97,6 @@ angular.module('myApp.controllers', [])
             })
 
 
-    })
-
-
-    .controller('RegisterCtrl', function($scope, $http, $location){
-        $scope.user = {};
-
-        $scope.submitUser = function() {
-            $http.post('/api/register/', $scope.user)
-                .success(function(data){
-                    $location.path('/');
-                })
-        }
     })
 
     .controller('AddStatusCtrl', function($scope, $http, $location, $rootScope){

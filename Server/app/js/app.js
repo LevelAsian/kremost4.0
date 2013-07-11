@@ -33,8 +33,14 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.dir
     }]);
 
 app.run(function ($rootScope, $http) {
-    $http.get('/getUser')
-        .success(function(user){
-            $rootScope.GlobalCurrentUser = user;
-        });
+    var hasUserInfo = false;
+
+    if(!hasUserInfo){
+        console.log("Getting user info");
+        $http.get('/getUser')
+            .success(function(user){
+                $rootScope.GlobalCurrentUser = user;
+                hasUserInfo= true;
+            });
+    }
 });
