@@ -34,7 +34,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.dir
 
 app.run(function ($rootScope, $http) {
     var hasUserInfo = false;
-
+    // shit
     if(!hasUserInfo){
         console.log("Getting user info");
         $http.get('/getUser')
