@@ -16,4 +16,20 @@ angular.module('myApp.filters', []).filter('StatusDateFilter', function() {
         });
         return stillRelevant
     }
-});
+})
+
+
+
+    .filter('commentFilter', function() {
+        return function(comments, statusmodel, status){
+
+            var relatedComment = []
+
+            comments.forEach(function(comment){
+                if(comment.commentToStatus == status._id){
+                    relatedComment.push(comment);
+                }
+            })
+            return relatedComment
+        }
+    })

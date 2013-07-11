@@ -4,11 +4,13 @@ var mongoose = require('mongoose')
     , SALT_WORK_FACTOR = 10;
 
 
-mongoose.connect('mongodb://admin:admin@ds031608.mongolab.com:31608/heroku_app16560192');
+//mongoose.connect('mongodb://localhost/asd')
+
+mongoose.connect('mongodb://admin:admin@ds035358.mongolab.com:35358/heroku_app16830375');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
-    console.log('Connected to DB');
+    console.log('Connected to database');
 });
 
 // User Schema
@@ -21,12 +23,13 @@ var userSchema = mongoose.Schema({
     statuses: [{
         text: String,
         startdate:{ type: Date, default: Date.now },
-        enddate: { type: Date, default: Date.now },
-        comments: [{
-            text: String,
-            by: String,
-            added: {type: Date, default: Date.now}
-        }]
+        enddate: { type: Date, default: Date.now }
+    }],
+    comments: [{
+        text: String,
+        commentToStatus: String,
+        by: String,
+        added: {type: Date, default: Date.now }
     }]
 });
 

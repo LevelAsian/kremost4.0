@@ -2,7 +2,7 @@
 
 angular.module('myApp.controllers', [])
 
-    .controller('FriendsCtrl', function($scope, $http, $location, $rootScope) {
+    .controller('FriendsCtrl', function($scope, $http, $location, $rootScope, $route) {
 
 
         var currentUser = $rootScope.GlobalCurrentUser;
@@ -41,6 +41,7 @@ angular.module('myApp.controllers', [])
                 .success(function(){
                     console.log("accepted friend req");
                 });
+            $route.reload()
 
 
         };
@@ -55,6 +56,7 @@ angular.module('myApp.controllers', [])
                 .success(function(){
                     console.log("Deleted friend request")
                 })
+            $route.reload()
 
 
         }
@@ -62,19 +64,38 @@ angular.module('myApp.controllers', [])
 
     })
 
-    .controller('FriendCtrl', function($scope, $routeParams, $http) {
+    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
+        var currentUser = $rootScope.GlobalCurrentUser;
 
         $scope.friend = {};
+
         $http.get('/api/friend/' + $routeParams.email).
             success(function(data) {
                 $scope.friend.name = data.name;
                 $scope.friend.statuses = data.statuses;
+                $scope.friend.comments = data.comments;
             });
+
+
+        $scope.comment = function(status) {
+            status.commenter = currentUser.name;
+
+            $http.post('/api/comment/', status)
+                .success(function(){
+                    $location.path('/');
+                });
+            $route.reload()
+
+            status.newcomment= "";
+        }
+
+
 
         $http.post('/api/deleteoldstatuses/' + $routeParams.email)
             .success(function(){
-
             })
+
+
     })
 
 

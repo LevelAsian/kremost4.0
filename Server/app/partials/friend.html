@@ -1,8 +1,27 @@
 <div class="span6">
-    <h4>{{friend.name}}'s Status:</h4>
-
+    <h1>{{friend.name}}'s Status</h1>
+    <br>
     <!-- orderBy: sorterer baklengs etter dato -->
-    <ul ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true">
-        <p>added: {{status.startdate | date:'H:mm'}} expires:{{status.enddate | date:'H:mm'}} <i class="icon-random"></i> {{status.text}}</p>
+    <ul ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
+        <h3>{{status.text}}</h3>
+        <p> added: {{status.startdate | date:'H:mm'}} expires:{{status.enddate | date:'H:mm'}} </p>
+
+
+        <h5 >Comments</h5>
+        <ul ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">
+
+            <p>{{comment.text}} by: {{comment.by}}, added: {{comment.added | date:'H:mm'}} </p>
+        </ul>
+
+
+        <input type="text" ng-model="status.newcomment" placeholder="Write a comment...">
+
+
+        <br>
+
+        <button class="btn" ng-click="comment(status)">Comment</button>
+        <br>
+        <br>
+        <br>
     </ul>
 </div>

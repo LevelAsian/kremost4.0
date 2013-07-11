@@ -79,11 +79,24 @@ exports.comment = function(req, res){
 
     console.log(req.body);
 
-    User.update({email: req.body.statusowner}, {$push: {"statuses": {"comments": {text: req.body.newcomment, by: req.body.email, added: startdate}}}}, function(err, docs){
-        console.log('update success!!');
-    });
+    console.log('id: ' + req.body._id);
+    console.log('Status: ' + req.body.text);
+    console.log('New comment: ' +req.body.newcomment);
+    console.log('By: '+ req.body.commenter);
+    console.log('Date: ' +startdate);
 
 
+    User.update({'statuses._id': req.body._id}, { $push: {"comments": {
+            text: req.body.newcomment,
+            commentToStatus: req.body._id,
+            by: req.body.commenter,
+            added: startdate
+        }}},
+        function(err, docs){
+            //res.send(docs);
+
+        }
+    )
 }
 
 
@@ -165,6 +178,7 @@ exports.deleteoldstatuses = function(req, res){
             if(enddate<date){
                 // Her slettes statusene
                 User.update({email: user.email}, {$pull: {statuses:{_id:status._id}}}).exec();
+                User.update({email: user.email}, {$pull: {comments:{commentToStatus: status._id}}}).exec();
             }else{
             }
         })
