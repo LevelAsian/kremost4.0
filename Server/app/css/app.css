@@ -1,20 +1,6 @@
-
-
-/* Custom container */
-.container-narrow {
-  margin: 0 auto;
-}
-.container-narrow > hr {
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  margin: 30px 0;
-  text-align: center;
-}
-.jumbotron h1 {
-  font-size: 48px;
-  line-height: 1;
+@font-face {
+    font-family: Existence-Light;
+    src: url("../vendor/fonts/Existence-Light/Existence-Light.otf") format("opentype");
 }
 
 #footer{
@@ -29,10 +15,47 @@
     display: inline-block; /* plasserer footer knappene i midten med text-align #hax0r */
 }
 
-.header {
+#friendswrapper{
+    margin-left: 5%;
+}
+
+.headermain{
+    text-align: right;
+}
+
+.headerbutton{
+    display: inline-block;
+}
+
+.newstatuswrapper{
+    margin-top: 25%;
     text-align: center;
 }
 
-#friendswrapper{
-    margin-left: 5%;
+.newstatuscontainer{
+    display: inline-block;
+    text-align: center;
+}
+
+.newstatustext{
+    margin-bottom: 15%;
+    font-family: Existence-Light;
+    color: #D0D0CC;
+}
+
+.poststatusbutton{
+    text-align: center;
+    float: right;
+}
+
+.newstatustextarea{
+    margin-left: 2.5%;
+}
+
+.inputfooter {
+    display: inline-block;
+    margin-top: 20%;
+    float:right;
+    font-size: 115%;
+    font-family: Existence-Light;
 }
