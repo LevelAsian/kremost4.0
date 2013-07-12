@@ -74,6 +74,7 @@ angular.module('myApp.controllers', [])
 
         $scope.off = function(){
             show = false;
+            $scope.friend.friendemail = null;
         }
 
         $scope.showButton = function(){
