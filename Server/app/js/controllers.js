@@ -13,57 +13,101 @@ angular.module('myApp.controllers', [])
             setTimeout(function(){$location.path('/#friends'), 1000})
             hasreloaded = true;
         }
-            $scope.currentUser = currentUser;
-            $http.get('/api/friends/' + currentUser.email).
-                success(function(friends) {
-                    $scope.friends = friends;
+        $scope.currentUser = currentUser;
+        $http.get('/api/friends/' + currentUser.email).
+            success(function(friends) {
+                $scope.friends = friends;
+            });
+        $scope.openFriend = function(friend) {
+            $location.path('/friend/' + friend.email);
+        };
+
+
+        $http.get('/api/friend_requests/' + currentUser.email).
+            success(function(data){
+
+                $scope.requests = data;
+
+            });
+
+        // Friend request
+        $scope.acceptRequest = function(request) {
+
+            console.log("hei: " + currentUser.email);
+            console.log("requests er: " + request);
+            $scope.requester = {};
+            $scope.requester.currentmail = currentUser.email;
+            $scope.requester.email = request;
+            console.log("heihei" + $scope.requester.email);
+            console.log(currentUser.friends);
+
+
+
+            $http.post('/api/acceptRequest/', $scope.requester)
+                .success(function(){
+                    console.log("accepted friend req");
                 });
-            $scope.openFriend = function(friend) {
-                $location.path('/friend/' + friend.email);
-            };
+            $route.reload()
 
 
-            $http.get('/api/friend_requests/' + currentUser.email).
+        };
+
+        $scope.declineRequest = function(request){
+
+            $scope.requester= {};
+            $scope.requester.currentmail = currentUser.email;
+            $scope.requester.email = request;
+
+            $http.post('/api/declineRequest/', $scope.requester)
+                .success(function(){
+                    console.log("Deleted friend request")
+                })
+            $route.reload()
+        }
+
+        // Add friend...
+        var show = false;
+
+        $scope.on = function(){
+            show = true;
+        }
+
+        $scope.off = function(){
+            show = false;
+        }
+
+        $scope.showButton = function(){
+            return show;
+        }
+
+        $scope.friend = {};
+        $scope.friend.CurrentUserMail = currentUser.email;
+
+        $scope.test = "";
+
+        $scope.addFriend = function() {
+            $http.get('api/queryforusers/' + $scope.friend.friendemail ).
                 success(function(data){
+                    if($scope.friend.friendemail == currentUser.email){
+                        $scope.test = "Cannot add yourself as a friend!";
+                    } else{
+                        $http.get('/api/updatefriendlist/' + currentUser.email).
+                            success(function(User) {
+                                currentUser.friends = User.friends;
+                                if(currentUser.friends.indexOf($scope.friend.friendemail) === -1){
 
-                    $scope.requests = data;
+                                    $http.post('/api/addfriend/', $scope.friend)
+                                        .success(function(){
+                                            $scope.text = "friend request sent";
+                                        });
+                                } else {
+                                    $scope.text = $scope.friend.friendemail + " is already your friend";
+                                }
+                            });
 
-                });
-
-
-            $scope.acceptRequest = function(request) {
-
-                console.log("hei: " + currentUser.email);
-                console.log("requests er: " + request);
-                $scope.requester = {};
-                $scope.requester.currentmail = currentUser.email;
-                $scope.requester.email = request;
-                console.log("heihei" + $scope.requester.email);
-                console.log(currentUser.friends);
-
-
-
-                $http.post('/api/acceptRequest/', $scope.requester)
-                    .success(function(){
-                        console.log("accepted friend req");
-                    });
-                $route.reload()
-
-
-            };
-
-            $scope.declineRequest = function(request){
-
-                $scope.requester= {};
-                $scope.requester.currentmail = currentUser.email;
-                $scope.requester.email = request;
-
-                $http.post('/api/declineRequest/', $scope.requester)
-                    .success(function(){
-                        console.log("Deleted friend request")
-                    })
-                $route.reload()
-            }
+                    }
+                })
+        }
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
