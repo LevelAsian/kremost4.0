@@ -1,9 +1,14 @@
-<div class="newstatuswrapper">
-    <div class="newstatuscontainer">
+
         <div id="friendswrapper">
 
-            <a ng-click="openFriend(currentUser)"><strong><i class="icon-home"></i> {{ currentUser.name }}</strong></a>
+            <h4><a ng-click="openFriend(currentUser)"><strong> <i class="icon-home"></i>{{ currentUser.name }}</strong></a></h4>
             <br>
+
+            <div ng-repeat="friend in friends">
+                 <br>
+                <a ng-click="openFriend(friend)"> <i class="icon-user"></i> {{  friend.name}}</a>
+            </div>
+
             <br>
             <div ng-repeat="request in requests">
                 <p>Friend request: {{request}}
@@ -12,15 +17,7 @@
                     <a ng-click=declineRequest(request)> Decline </a>
                 </p>
             </div>
-
-            <div ng-repeat="friend in friends">
-
-                <a ng-click="openFriend(friend)"> <i class="icon-user"></i> {{  friend.name}}</a>
-            </div>
-
-            <br>
             <a href="#/addfriend"><button class="btn-info btn btn-small">Add friend</button></a>
+            <a href="/logout" class="headerbutton"><button class="btn-info btn btn-small" style="display: block">Log Out</button></a>
 
         </div>
-    </div>
-</div>
