@@ -69,9 +69,11 @@
 }
 
 .statusadder{
-    line-height: 0px;
+    line-height: 30px;
 }
 
 .commentadder{
     line-height: 15px;
 }
+
+

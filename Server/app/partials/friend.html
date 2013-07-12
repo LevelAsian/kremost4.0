@@ -8,8 +8,11 @@
             <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
 
 
-                <h2 class= "statusadder">{{status.text}}</h2>
-                <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}</small>
+                <h3 class="statusadder">{{status.text}}</h3>
+                <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}
+                <br>
+                seen by: <ul ng-repeat="seen in seens>
+                </small>
 
                      <br>
                      <br>
