@@ -44,7 +44,7 @@
 
 .poststatusbutton{
     text-align: center;
-    float: right;
+
 }
 
 .newstatustextarea{
@@ -59,10 +59,19 @@
     font-family: Existence-Light;
 }
 
+
 .plainFont{
     font-family: arial;
 }
 
 .friendswrapper {
     margin: 5%;
+}
+
+.statusadder{
+    line-height: 0px;
+}
+
+.commentadder{
+    line-height: 15px;
 }
