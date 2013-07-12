@@ -4,10 +4,9 @@
 }
 
 #footer{
-    Position: absolute;
-    Width: 100%;
+    position:fixed;
+    width:100%;
     Bottom: 0;
-    z-index: 1000;
     text-align: center;
 }
 
