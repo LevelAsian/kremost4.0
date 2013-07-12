@@ -1,60 +1,69 @@
 'use strict';
-
+var hasreloaded = false;
 angular.module('myApp.controllers', [])
 
-    .controller('FriendsCtrl', function($scope, $http, $location, $rootScope) {
-
+    .controller('FriendsCtrl', function($scope, $http, $location, $rootScope, $route) {
 
         var currentUser = $rootScope.GlobalCurrentUser;
 
-        $scope.currentUser = currentUser;
-        $http.get('/api/friends/' + currentUser.email).
-            success(function(friends) {
-                $scope.friends = friends;
-            });
-        $scope.openFriend = function(friend) {
-            $location.path('/friend/' + friend.email);
-        };
+        // reloaded for å fikse bug.
+        if(!hasreloaded){
+            setTimeout(function(){$location.path('/#friends'), 500})
+            hasreloaded = true;
+        }else{
+            $scope.currentUser = currentUser;
+            $http.get('/api/friends/' + currentUser.email).
+                success(function(friends) {
+                    $scope.friends = friends;
+                });
+            $scope.openFriend = function(friend) {
+                $location.path('/friend/' + friend.email);
+            };
 
 
-        $http.get('/api/friend_requests/' + currentUser.email).
-            success(function(data){
+            $http.get('/api/friend_requests/' + currentUser.email).
+                success(function(data){
 
-                $scope.requests = data;
+                    $scope.requests = data;
 
-            });
-
-
-        $scope.acceptRequest = function(request) {
-
-            console.log("hei: " + currentUser.email);
-            console.log("requests er: " + request);
-            $scope.requester = {};
-            $scope.requester.currentmail = currentUser.email;
-            $scope.requester.email = request;
-            console.log("heihei" + $scope.requester.email);
-            console.log(currentUser.friends);
-
-
-
-            $http.post('/api/acceptRequest/', $scope.requester)
-                .success(function(){
-                    console.log("accepted friend req");
                 });
 
 
-        };
+            $scope.acceptRequest = function(request) {
 
-        $scope.declineRequest = function(request){
+                console.log("hei: " + currentUser.email);
+                console.log("requests er: " + request);
+                $scope.requester = {};
+                $scope.requester.currentmail = currentUser.email;
+                $scope.requester.email = request;
+                console.log("heihei" + $scope.requester.email);
+                console.log(currentUser.friends);
 
-            $scope.requester= {};
-            $scope.requester.currentmail = currentUser.email;
-            $scope.requester.email = request;
 
-            $http.post('/api/declineRequest/', $scope.requester)
-                .success(function(){
-                    console.log("Deleted friend request")
-                })
+
+                $http.post('/api/acceptRequest/', $scope.requester)
+                    .success(function(){
+                        console.log("accepted friend req");
+                    });
+                $route.reload()
+
+
+            };
+
+            $scope.declineRequest = function(request){
+
+                $scope.requester= {};
+                $scope.requester.currentmail = currentUser.email;
+                $scope.requester.email = request;
+
+                $http.post('/api/declineRequest/', $scope.requester)
+                    .success(function(){
+                        console.log("Deleted friend request")
+                    })
+                $route.reload()
+
+
+            }
 
 
         }
@@ -62,10 +71,10 @@ angular.module('myApp.controllers', [])
 
     })
 
-    .controller('FriendCtrl', function($scope, $routeParams, $http) {
+    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
+        var currentUser = $rootScope.GlobalCurrentUser;
 
         $scope.friend = {};
-
 
         $http.get('/api/friend/' + $routeParams.email).
             success(function(data) {
@@ -73,6 +82,7 @@ angular.module('myApp.controllers', [])
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
             });
+
 
         $scope.comment = function(status) {
             status.commenter = currentUser.name;
@@ -82,27 +92,17 @@ angular.module('myApp.controllers', [])
                     $location.path('/');
                 });
             $route.reload()
-            //$location.refresh()
 
             status.newcomment= "";
         }
 
+
+
         $http.post('/api/deleteoldstatuses/' + $routeParams.email)
             .success(function(){
-
             })
-    })
 
 
-    .controller('RegisterCtrl', function($scope, $http, $location){
-        $scope.user = {};
-
-        $scope.submitUser = function() {
-            $http.post('/api/register/', $scope.user)
-                .success(function(data){
-                    $location.path('/');
-                })
-        }
     })
 
     .controller('AddStatusCtrl', function($scope, $http, $location, $rootScope){

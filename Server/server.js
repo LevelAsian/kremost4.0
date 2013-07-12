@@ -6,8 +6,7 @@ var path     = require('path')
     , LocalStrategy = require('passport-local').Strategy
     , mongoose = require('mongoose')
     , bcrypt = require('bcrypt')
-    , cors = require('cors')
-    , SALT_WORK_FACTOR = 10;
+    , cors = require('cors');
 
 var User = require('./model/db');
 
@@ -57,7 +56,7 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(cors());
-app.use(express.session({ secret: 'secretyyy' }));
+app.use(express.session({ secret: 'resrhtjyfkgulhiøjo' }));
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 app.use(passport.initialize());
@@ -80,11 +79,11 @@ app.all('/', ensureAuthenticated, function(req, res) { // Dette går til angular
 });
 
 app.get('/login', function(req, res){
-    res.render('login', { user: req.user, message: req.session.messages });
+    res.render('login');//ejs
 });
 
 app.get('/register', function(req, res){
-    res.render('register');
+    res.render('register');//ejs
 });
 
 //API
@@ -104,9 +103,9 @@ app.get('/api/queryforusers/:email', api.queryforusers);
 app.get('/api/friend_requests/:email', api.friend_requests);
 
 app.get('/getUser', function(req, res){
-    User.findOne({email: currentuser}, function(err, user){
+    User.findById(req.session.passport.user, function (err, user) {
         res.json(user);
-    })
+    });
 });
 
 // POST /login
@@ -128,7 +127,6 @@ app.get('/getUser', function(req, res){
 // POST /login
 //   This is an alternative implementation that uses a custom callback to
 //   acheive the same functionality.
-var currentuser;
 
 app.post('/login', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
@@ -138,7 +136,6 @@ app.post('/login', function(req, res, next) {
             return res.redirect('/login')
         }
         req.logIn(user, function(err) {
-            currentuser = req.body.username;
             if (err) { return next(err); }
             return res.redirect('/');
         });
@@ -169,4 +166,3 @@ function ensureAuthenticated(req, res, next) {
     }
     res.redirect('/login')
 }
-
