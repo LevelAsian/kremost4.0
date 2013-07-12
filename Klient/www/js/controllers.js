@@ -1,5 +1,7 @@
 'use strict';
+
 var hasreloaded = false;
+
 angular.module('myApp.controllers', [])
 
     .controller('FriendsCtrl', function($scope, $http, $location, $rootScope, $route) {
@@ -8,9 +10,9 @@ angular.module('myApp.controllers', [])
 
         // reloaded for å fikse bug.
         if(!hasreloaded){
-            setTimeout(function(){$location.path('/#friends'), 500})
+            setTimeout(function(){$location.path('/#friends'), 1000})
             hasreloaded = true;
-        }else{
+        }
             $scope.currentUser = currentUser;
             $http.get('/api/friends/' + currentUser.email).
                 success(function(friends) {
@@ -61,14 +63,7 @@ angular.module('myApp.controllers', [])
                         console.log("Deleted friend request")
                     })
                 $route.reload()
-
-
             }
-
-
-        }
-
-
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
@@ -81,7 +76,21 @@ angular.module('myApp.controllers', [])
                 $scope.friend.name = data.name;
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
+                $scope.friend.email = data.email;
+                if(data.email==currentUser.email){
+                    $scope.checkuser = true;
+                }else{
+                    $scope.checkuser = false;
+                }
             });
+
+        $scope.checkIfCurrentUser = function(){
+            if($scope.checkuser){
+                return true;
+            }else{
+                return false;
+            }
+        }
 
 
         $scope.comment = function(status) {

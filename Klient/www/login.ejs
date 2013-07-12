@@ -1,17 +1,35 @@
 <% layout('layout') -%>
 
+<div class="newstatuswrapper">
+    <div class="newstatuscontainer">
+        <h1 class="newstatustext">Login</h1>
 
-<form action="/login" method="post">
-    <div>
-        <!--Her må navnet være/hete username selv om det egentlig er for emailen (passportjs sin skyld)-->
-        <input type="text" name="username" placeholder="Email"/><br/>
-    </div>
-    <div>
-        <input type="password" name="password" placeholder="Password"/>
-    </div>
-    <div>
-        <input type="submit" value="Submit"/>
-    </div>
-</form>
+        <div class=newstatsutextandbuttoncontainer>
+            <form action="/login" method="post">
+                <div>
+                    <!--Her må navnet være/hete username selv om det egentlig er for emailen (passportjs sin skyld)-->
+                    <input style="text-transform: lowercase;"type="text" name="username" placeholder="Email"/><br/>
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="Password"/>
+                </div>
+                <div>
+<<<<<<< HEAD
+                    <input type="submit" class="poststatusbutton btn-success btn" value="Submit">
+=======
+<<<<<<< HEAD
+                    <input  type="submit" value="Submit" class="btn-info btn">
+=======
+                    <input type="submit" class="poststatusbutton btn-success btn plainFont" value="Submit">
+>>>>>>> 0be6ab0c8dbc0e04a0001e762c64a6840396e53b
+>>>>>>> 155847ac467af5043c470ccf0df5c8cbeac1b736
+                </div>
+            </form>
+            <br>
+        </div>
 
-<a href="/register"><h4>Register</h4></a>
+        <div class="inputfooter">
+            <h3><a href="/register" class="btn-info btn">Sign up here</a></h3>
+        </div>
+    </div>
+</div>
