@@ -3,16 +3,21 @@
     src: url("../vendor/fonts/Existence-Light/Existence-Light.otf") format("opentype");
 }
 
+#footer2 {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#999;
+}
+
 #footer{
-    Position: absolute;
-    Width: 100%;
-    Bottom: 0;
-    z-index: 1000;
-    text-align: center;
+    position:fixed;
 }
 
 #innerfooter {
-    display: inline-block; /* plasserer footer knappene i midten med text-align #hax0r */
+    /*display: inline-block; /* plasserer footer knappene i midten med text-align #hax0r */
 }
 
 #friendswrapper{
