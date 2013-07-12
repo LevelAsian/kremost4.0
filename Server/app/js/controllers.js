@@ -13,6 +13,7 @@ angular.module('myApp.controllers', [])
             setTimeout(function(){$location.path('/#friends'), 1000})
             hasreloaded = true;
         }
+
         $scope.currentUser = currentUser;
         $http.get('/api/friends/' + currentUser.email).
             success(function(friends) {
@@ -21,7 +22,6 @@ angular.module('myApp.controllers', [])
         $scope.openFriend = function(friend) {
             $location.path('/friend/' + friend.email);
         };
-
 
         $http.get('/api/friend_requests/' + currentUser.email).
             success(function(data){
@@ -122,6 +122,7 @@ angular.module('myApp.controllers', [])
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
+                //$scope.friend.seens = data.seen;
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
                 }else{
@@ -135,6 +136,13 @@ angular.module('myApp.controllers', [])
             }else{
                 return false;
             }
+        }
+
+        $scope.seen = function(){
+            $http.post('/api/seen/', currentUser)
+                console.log(currentUser)
+                .success(function(){
+                });
         }
 
 

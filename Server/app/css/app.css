@@ -21,6 +21,9 @@
     text-align: center;
     border-right: #000000 solid thin;
     border-top: #000000 solid medium;
+    background-color: mediumslateblue;
+    color: black;
+    text-decoration: none;
 }
 .footerleft:active{
     background-color: #808080;
@@ -33,6 +36,9 @@
     text-align: center;
     border-left:#000000 solid thin;
     border-top: #000000 solid medium;
+    background-color: mediumslateblue;
+    color: black;
+    text-decoration: none;
 }
 .footerright:active{
     background-color: #808080;
@@ -176,10 +182,10 @@
 }
 
 .statusadder{
+    line-height: 30px;
     margin: 0%;
 }
 
 .dropdown-menu{
     left: -400%;
 }
-
