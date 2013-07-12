@@ -3,6 +3,8 @@
 <div class="newstatuswrapper">
     <div class="newstatuscontainer">
         <h1 class="newstatustext">Login</h1>
+
+        <div class=newstatsutextandbuttoncontainer>
             <form action="/login" method="post">
                 <div>
                     <!--Her må navnet være/hete username selv om det egentlig er for emailen (passportjs sin skyld)-->
@@ -12,10 +14,18 @@
                     <input type="password" name="password" placeholder="Password"/>
                 </div>
                 <div>
+<<<<<<< HEAD
                     <input  type="submit" value="Submit" class="btn-info btn">
+=======
+                    <input type="submit" class="poststatusbutton btn-success btn plainFont" value="Submit">
+>>>>>>> 0be6ab0c8dbc0e04a0001e762c64a6840396e53b
                 </div>
             </form>
+            <br>
+        </div>
 
-        <a href="/register"><h5>Register</h5></a>
+        <div class="inputfooter">
+            <h3>new user? </h3><a href="/register" class="btn-info btn plainFont">Register</a>
+        </div>
     </div>
 </div>

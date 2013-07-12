@@ -54,9 +54,18 @@
 .inputfooter {
     display: inline-block;
     margin-top: 20%;
-    float:right;
+    float:right; !important
     font-size: 115%;
     font-family: Existence-Light;
+}
+
+
+.plainFont{
+    font-family: arial;
+}
+
+.friendswrapper {
+    margin: 5%;
 }
 
 .statusadder{
