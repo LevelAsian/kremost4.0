@@ -1,17 +1,21 @@
 <% layout('layout') -%>
 
+<div class="newstatuswrapper">
+    <div class="newstatuscontainer">
+        <h1 class="newstatustext">Login</h1>
+            <form action="/login" method="post">
+                <div>
+                    <!--Her må navnet være/hete username selv om det egentlig er for emailen (passportjs sin skyld)-->
+                    <input type="text" name="username" placeholder="Email"/><br/>
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="Password"/>
+                </div>
+                <div>
+                    <input type="submit" value="Submit" class="btn-info btn">
+                </div>
+            </form>
 
-<form action="/login" method="post">
-    <div>
-        <!--Her må navnet være/hete username selv om det egentlig er for emailen (passportjs sin skyld)-->
-        <input type="text" name="username" placeholder="Email"/><br/>
+        <a href="/register"><h5>Register</h5></a>
     </div>
-    <div>
-        <input type="password" name="password" placeholder="Password"/>
-    </div>
-    <div>
-        <input type="submit" value="Submit"/>
-    </div>
-</form>
-
-<a href="/register"><h4>Register</h4></a>
+</div>
