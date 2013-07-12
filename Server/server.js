@@ -147,7 +147,7 @@ app.get('/logout', function(req, res){
     res.redirect('/');
 });
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 app.listen(port);
 
 console.log('Server listening on port ' + port);

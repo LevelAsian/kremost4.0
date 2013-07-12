@@ -1,37 +1,59 @@
 
-        <div class="span6">
-            <h1>{{friend.name}}</h1>
+<div class="singlefriendwrapper">
+    <div class="singlefriendheaderwrapper">
+        <div class="singlefriendheadercontainer">
+            <h3 class="singlefriendname">{{friend.name}}</h3>
 
-            <br>
-            <body>
-            <!-- orderBy: sorterer baklengs etter dato -->
-            <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
-
-
-                <h3 class="statusadder">{{status.text}}</h3>
-                <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}
-                <br>
-                seen by: <ul ng-repeat="seen in seens>
-                </small>
-
-                     <br>
-                     <br>
-                    <div ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">
-
-                    <p class= "commentadder"> <strong>{{comment.by}}</strong> {{comment.text}}
-                        <br>
-                        <small>{{comment.added | date:'H:mm'}}</small></p>
-                </div>
-
-                <div class="input-append">
-                    <input type="text" ng-model="status.newcomment" placeholder="Write a comment..." class="span2">
-
-                    <button class="btn btn-success" ng-click="comment(status)">Comment</button>
-                </div>
-
-                <br>
-                <br>
-                <br>
+            <!-- Vises når man er på sin egen bruker -->
+            <div ng-show="checkIfCurrentUser()" class="btn-group" ng-class='{open: open}'>
+                <button class="btn dropdown-" data-toggle="dropdown" ng-click='open=!open'><span class="icon-wrench"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="disabled" ><a href="">email: {{GlobalCurrentUser.email}}</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li class="disabled" >Settings</li>
+                </ul>
             </div>
-            </body>
+
+            <!-- Vises når man besøker noen andre -->
+            <div ng-show="!checkIfCurrentUser()" class="btn-group" ng-class='{open: open}'>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" ng-click='open=!open'><span class="icon-wrench"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="disabled" ><a href="">email: {{friend.email}}</a></li>
+                    <li class="disabled" ><a href="">Request update</a></li>
+                </ul>
+            </div>
         </div>
+    </div>
+    <hr>
+    <!-- orderBy: sorterer baklengs etter dato -->
+    <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
+
+
+        <h4 class= "statusadder">{{status.text}}</h4>
+        <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}
+            <br>
+        seen by:
+        </small>
+
+        <br>
+        <br>
+
+        <div ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">
+
+            <p class= "commentadder"> <strong>{{comment.by}}</strong> {{comment.text}}
+                <br>
+                <small>{{comment.added | date:'H:mm'}}</small></p>
+        </div>
+
+        <h4><a ng-click="showDetails = ! showDetails" ng-hide="showDetails"><button class="btn btn-mini btn-success">comment</button></a></h4>
+        <div ng-show="showDetails">
+            <div class="input-append">
+                <input type="text" ng-model="status.newcomment" placeholder="Write a comment..." class="span2">
+
+                <button class="btn btn-success" ng-click="comment(status)">Comment</button>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+</div>
