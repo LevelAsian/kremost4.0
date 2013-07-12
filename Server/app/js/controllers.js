@@ -14,6 +14,8 @@ angular.module('myApp.controllers', [])
             hasreloaded = true;
         }
             $scope.currentUser = currentUser;
+
+
             $http.get('/api/friends/' + currentUser.email).
                 success(function(friends) {
                     $scope.friends = friends;
@@ -77,6 +79,7 @@ angular.module('myApp.controllers', [])
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
+                //$scope.friend.seens = data.seen;
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
                 }else{
@@ -90,6 +93,13 @@ angular.module('myApp.controllers', [])
             }else{
                 return false;
             }
+        }
+
+        $scope.seen = function(){
+            $http.post('/api/seen/', currentUser)
+                console.log(currentUser)
+                .success(function(){
+                });
         }
 
 
