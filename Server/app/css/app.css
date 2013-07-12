@@ -58,3 +58,11 @@
     font-size: 115%;
     font-family: Existence-Light;
 }
+
+.statusadder{
+    line-height: 0px;
+}
+
+.commentadder{
+    line-height: 15px;
+}

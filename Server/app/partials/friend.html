@@ -2,15 +2,19 @@
         <div class="span6">
             <h2>{{friend.name}}</h2>
             <br>
+            <body>
             <!-- orderBy: sorterer baklengs etter dato -->
             <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
-                <h3>{{status.text}}</h3>
-                <p><small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}</small></p>
 
 
+                <h3 class= "statusadder">{{status.text}}</h3>
+                <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}</small>
+
+                     <br>
+                     <br>
                     <div ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">
 
-                    <p> <strong>{{comment.by}}</strong> {{comment.text}}
+                    <p class= "commentadder"> <strong>{{comment.by}}</strong> {{comment.text}}
                         <br>
                         <small>{{comment.added | date:'H:mm'}}</small></p>
                 </div>
@@ -25,4 +29,5 @@
                 <br>
                 <br>
             </div>
+            </body>
         </div>
