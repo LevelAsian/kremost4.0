@@ -76,7 +76,21 @@ angular.module('myApp.controllers', [])
                 $scope.friend.name = data.name;
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
+                $scope.friend.email = data.email;
+                if(data.email==currentUser.email){
+                    $scope.checkuser = true;
+                }else{
+                    $scope.checkuser = false;
+                }
             });
+
+        $scope.checkIfCurrentUser = function(){
+            if($scope.checkuser){
+                return true;
+            }else{
+                return false;
+            }
+        }
 
 
         $scope.comment = function(status) {

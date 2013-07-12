@@ -1,21 +1,34 @@
-@font-face {
-    font-family: Existence-Light;
-    src: url("../vendor/fonts/Existence-Light/Existence-Light.otf") format("opentype");
-}
-
+/***** Footer *****/
+/***** Footer *****/
+/***** Footer *****/
 #footer{
     position:fixed;
     width:100%;
     Bottom: 0;
+    height: 8%;
+}
+
+#innerfooter{
+    float:left;
+    width:100%;
+    height: 100%;
+}
+.footerleft{
+    height: 100%;
+    float:left;
+    width: 49%;
     text-align: center;
+    border-right: #000000 solid thin;
+    border-top: #000000 solid medium;
 }
 
-#innerfooter {
-    display: inline-block; /* plasserer footer knappene i midten med text-align #hax0r */
-}
-
-#friendswrapper{
-    margin-left: 5%;
+.footerright{
+    height: 100%;
+    float: left;
+    width: 49%;
+    text-align: center;
+    border-left:#000000 solid thin;
+    border-top: #000000 solid medium;
 }
 
 .headermain{
@@ -33,7 +46,7 @@
 
 .newstatuscontainer{
     display: inline-block;
-    text-align: center;
+
 }
 
 .newstatustext{
@@ -54,9 +67,7 @@
 .inputfooter {
     display: inline-block;
     margin-top: 20%;
-    float:right; !important
     font-size: 115%;
-    font-family: Existence-Light;
 }
 
 
@@ -64,14 +75,90 @@
     font-family: arial;
 }
 
-.friendswrapper {
-    margin: 5%;
-}
-
-.statusadder{
-    line-height: 0px;
-}
-
 .commentadder{
     line-height: 15px;
 }
+
+.faded{
+    color: cornflowerblue;
+}
+
+/***** Friends *****/
+/***** Friends *****/
+/***** Friends *****/
+#friendswrapper {
+    height: 100%;
+}
+
+.userinfriendslistwrapper{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-bottom: #808080 thick;
+
+}
+
+.userinfriendslistcontainer{
+    margin-left: 5%;
+    text-align: right;
+}
+
+.userinfriendslistwrapper:active {
+    background-color: peachpuff;
+}
+
+.userinfriendslist{
+    margin:auto;
+    margin-top: 1%;
+    float:left;
+}
+
+.addfriend{
+    margin:auto;
+    margin-right: 5%;
+}
+
+.friendwrapper{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-top: lightgray solid thin;
+    background-color: #f5f5f5;
+}
+
+.friendwrapper:active {
+    background-color: peachpuff;
+}
+
+.friendcontainer{
+    margin-left: 5%;
+}
+
+
+/***** Friend *****/
+/***** Friend *****/
+/***** Friend *****/
+
+.singlefriendwrapper{
+    height: 100%;
+    margin: 5%;
+}
+
+.singlefriendheaderwrapper{
+    text-align: center;
+}
+
+.singlefriendheadercontainer{
+    text-align: center;
+}
+
+.singlefriendname{
+    display: inline-block;
+}
+
+.statusadder{
+    margin: 0%;
+}
+
+.dropdown-menu{
+    left: -400%;
+}
+

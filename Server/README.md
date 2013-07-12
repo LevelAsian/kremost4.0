@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 kremost3.0
 ==========
 Ny layout!
@@ -31,3 +32,9 @@ patch - notes v0.0.3
 
 nå funker det på heroku
 
+=======
+kremost4.0
+==========
+
+Nytt oppsett
+>>>>>>> 155847ac467af5043c470ccf0df5c8cbeac1b736

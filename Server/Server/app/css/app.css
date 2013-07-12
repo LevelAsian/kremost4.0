@@ -1,0 +1,77 @@
+@font-face {
+    font-family: Existence-Light;
+    src: url("../vendor/fonts/Existence-Light/Existence-Light.otf") format("opentype");
+}
+
+#footer{
+    position:fixed;
+    width:100%;
+    Bottom: 0;
+    text-align: center;
+}
+
+#innerfooter {
+    display: inline-block; /* plasserer footer knappene i midten med text-align #hax0r */
+}
+
+#friendswrapper{
+    margin-left: 5%;
+}
+
+.headermain{
+    text-align: right;
+}
+
+.headerbutton{
+    display: inline-block;
+}
+
+.newstatuswrapper{
+    margin-top: 25%;
+    text-align: center;
+}
+
+.newstatuscontainer{
+    display: inline-block;
+    text-align: center;
+}
+
+.newstatustext{
+    margin-bottom: 15%;
+    font-family: Existence-Light;
+    color: #D0D0CC;
+}
+
+.poststatusbutton{
+    text-align: center;
+
+}
+
+.newstatustextarea{
+    margin-left: 2.5%;
+}
+
+.inputfooter {
+    display: inline-block;
+    margin-top: 20%;
+    float:right; !important
+    font-size: 115%;
+    font-family: Existence-Light;
+}
+
+
+.plainFont{
+    font-family: arial;
+}
+
+.friendswrapper {
+    margin: 5%;
+}
+
+.statusadder{
+    line-height: 0px;
+}
+
+.commentadder{
+    line-height: 15px;
+}
