@@ -167,7 +167,6 @@ angular.module('myApp.controllers', [])
 
             $http.post('/api/comment/', status)
                 .success(function(){
-                    $location.path('/');
                 });
             $route.reload()
 
@@ -182,10 +181,18 @@ angular.module('myApp.controllers', [])
         $scope.deletestatus = function(status){
             $http.post('/api/deletestatus/' + $routeParams.email, status)
                 .success(function(){
-                    console.log("slettet");
                     $route.reload();
                 });
         }
+
+        $scope.friend.currentUserEmail = currentUser.email;
+        $scope.deletefriend = function(){
+            $http.post('/api/deletefriend', $scope.friend)
+                .success(function(){
+                    $location.path('/');
+                });
+        };
+
     })
 
     .controller('AddStatusCtrl', function($scope, $http, $location, $rootScope){

@@ -19,6 +19,7 @@
                 <ul class="dropdown-menu">
                     <li class="disabled" ><a href="">email: {{friend.email}}</a></li>
                     <li class="disabled" ><a href="">Request update</a></li>
+                    <li ng-click="deletefriend()"><a href="">Delete friend</a></li>
                 </ul>
             </div>
 
@@ -32,8 +33,8 @@
 
 
         <h4 class = "statusadder">
-            <div ng-show="checkIfCurrentUser()" class="btn-group" ng-class='{open: open}'>
-                <button class="btn dropdown" data-toggle="dropdown" ng-click='open=!open'><span class="icon-edit"></span></button>
+            <div ng-show="checkIfCurrentUser()" class="btn-group" ng-class='{open: open1}'>
+                <button class="btn dropdown" data-toggle="dropdown" ng-click='open1=!open1'><span class="icon-edit"></span></button>
                 <ul class="dropdown-menu">
                     <li ng-click="deletestatus(status)"><a href="">Delete</a></li>
                     <li ng-click="deletestatus(status)" class="disabled"><a href="">Share</a></li>

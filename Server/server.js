@@ -95,6 +95,7 @@ app.post('/api/acceptRequest/', api.acceptRequest);
 app.post('/api/declineRequest/', api.declineRequest);
 app.post('/api/deleteoldstatuses/:email', api.deleteoldstatuses);
 app.post('/api/deletestatus/:email', api.deletestatus);
+app.post('/api/deletefriend', api.deletefriend);
 
 app.get('/api/GetOneUser/:email', api.GetOneUser);
 app.get('/api/friends/:email', api.friends);

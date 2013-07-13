@@ -193,6 +193,12 @@ exports.deletestatus = function(req, res){
    res.send();
 }
 
+exports.deletefriend = function(req, res){
+    User.update({email: req.body.email}, {$pull: {friends: req.body.currentUserEmail}}, false, true)
+    User.update({email: req.body.currentUserEmail}, {$pull: {friends: req.body.email}}, false, true)
+    res.send();
+}
+
 
 
 
