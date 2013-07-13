@@ -82,7 +82,7 @@ angular.module('myApp.controllers', [])
                 $http.get('api/queryforusers/' + $scope.friend.friendemail ).
                     success(function(data){
                         if($scope.friend.friendemail == currentUser.email){
-                            $scope.friend.feedback = "Cannot add yourself as a friend!";
+                            $scope.test = "Cannot add yourself as a friend!";
                         } else{
                             $http.get('/api/updatefriendlist/' + currentUser.email).
                                 success(function(User) {
@@ -91,10 +91,10 @@ angular.module('myApp.controllers', [])
 
                                         $http.post('/api/addfriend/', $scope.friend)
                                             .success(function(){
-                                                $scope.friend.feedback = "Friend request sent!";
+                                                $scope.text = "Friend request sent";
                                             });
                                     } else {
-                                        $scope.friend.feedback = $scope.friend.friendemail + " is already your friend";
+                                        $scope.text = $scope.friend.friendemail + " is already your friend";
                                     }
                                 });
 
