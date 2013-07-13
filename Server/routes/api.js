@@ -213,7 +213,7 @@ exports.seen = function(req, res){
             }
             else{
                 for(var j=0; j<req.body.seen.length; j++){
-                    if(req.body.seen[j].statusSeen == req.body.statuses[i]._id){
+                    if(req.body.seen[j].statusSeen == req.body.statuses[i]._id && req.body.seen[j].seenBy == req.body.name){
                         console.log(req.body.statuses[i]._id + " allerede sett!")
                         continue outerloop;
                     }

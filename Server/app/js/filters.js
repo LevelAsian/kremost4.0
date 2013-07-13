@@ -43,7 +43,7 @@ angular.module('myApp.filters', []).filter('StatusDateFilter', function() {
 
 
                 if(seen.statusSeen == status._id){
-                    console.log("samme")
+
                     relatedSeen.push(seen);
                 }
             })
