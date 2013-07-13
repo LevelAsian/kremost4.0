@@ -190,9 +190,6 @@ exports.comment = function(req, res){
 exports.seen = function(req, res){
  //HAHA GØY, BREAK FUNKER IKKE I FOREACHLOOPS
 
-
-    console.log(req.body.statuses[0].text)
-
     outerloop: for(var i= 0; i < req.body.statuses.length; i++){
 
         console.log("i: " + i)
