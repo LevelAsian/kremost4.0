@@ -24,10 +24,6 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.dir
             templateUrl: '/app/partials/addstatus.html',
             controller: 'AddStatusCtrl'})
 
-        $routeProvider.when('/addfriend', {
-            templateUrl: '/app/partials/addfriend.html',
-            controller: 'AddFriendCtrl'})
-
         $routeProvider.otherwise({
             redirectTo: '/friends'});
     }]);

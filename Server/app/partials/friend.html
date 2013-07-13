@@ -28,10 +28,10 @@
     <hr>
 
     <!-- orderBy: sorterer baklengs etter dato -->
-    <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
+    <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel" class="shuffleletters">
 
 
-        <h4 class= "statusadder">{{status.text}}</h4>
+        <h4 class = "statusadder">{{status.text}}</h4>
         <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}</small>
 
         <br>

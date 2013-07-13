@@ -1,13 +1,14 @@
 
 
+
 <div id="friendswrapper">
     <div class="friendsmainheader">
         <div class="friendssuperheader">
             <div ng-click="openFriend(currentUser)" class="userinfriendslistwrapper">
-                <h4 class="userinfriendslist"><strong> <i class="icon-home"></i> {{ currentUser.name }}</strong></h4>
+                <h4 class="userinfriendslist"><strong> <i class="icon-home"></i> <span class="shuffleletters"> {{ currentUser.name }} </span></strong></h4>
             </div>
             <div class="addfriendbuttoncontainer">
-                <a class="addfriend" ng-click="on()" ng-hide="showButton()"><button class="btn-danger btn btn-small">Add friend</button></a>
+                <a class="addfriend" ng-click="on()" ng-hide="showButton()"><button class="btn-danger btn btn-small"><span class="shuffleletters"> Add friend</span></button></a>
                 <a class="addfriend" ng-click="off()" ng-show="showButton()"><button class="btn-danger btn btn-small">Hide</button></a>
             </div>
         </div>
@@ -34,3 +35,5 @@
     </div>
 
 </div>
+
+

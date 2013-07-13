@@ -17,7 +17,7 @@
 .footerleft{
     height: 100%;
     float:left;
-    width: 49%;
+    width: 49.692%;
     text-align: center;
     border-right: #000000 solid thin;
     border-top: #000000 solid medium;
@@ -32,7 +32,7 @@
 .footerright{
     height: 100%;
     float: left;
-    width: 49%;
+    width: 49.692%;
     text-align: center;
     border-left:#000000 solid thin;
     border-top: #000000 solid medium;
