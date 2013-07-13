@@ -174,7 +174,7 @@ exports.deleteoldstatuses = function(req, res){
         user.statuses.forEach(function(status){
             var enddate = new Date(status.enddate);
             if(enddate<date){
-                // Her slettes statusene
+                // Her slettes statusene og commentsene
                 User.update({email: user.email}, {$pull: {statuses:{_id:status._id}}}).exec();
                 User.update({email: user.email}, {$pull: {comments:{commentToStatus: status._id}}}).exec();
             }else{
@@ -182,6 +182,15 @@ exports.deleteoldstatuses = function(req, res){
         })
     });
     res.send();
+}
+
+exports.deletestatus = function(req, res){
+   var status = req.body;
+   User.findOne({email: req.params.email}, function(err, user){
+       User.update({email: user.email}, {$pull: {statuses:{_id:status._id}}}).exec();
+       User.update({email: user.email}, {$pull: {comments:{commentToStatus: status._id}}}).exec();
+   });
+   res.send();
 }
 
 

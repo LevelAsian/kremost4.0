@@ -96,6 +96,7 @@ angular.module('myApp.controllers', [])
         $scope.addFriend = function() {
             $http.get('api/queryforusers/' + $scope.friend.friendemail ).
                 success(function(data){
+                    console.log(data);
                     if($scope.friend.friendemail == currentUser.email){
                         $scope.test = "Cannot add yourself as a friend!";
                     } else{
@@ -118,7 +119,7 @@ angular.module('myApp.controllers', [])
         }
     })
 
-    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
+    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route, $location) {
         // stokker bokstavene rundt omkring
         $(function(){
             var container = $(".shuffleletters");
@@ -155,7 +156,7 @@ angular.module('myApp.controllers', [])
 
         $scope.seen = function(){
             $http.post('/api/seen/', currentUser)
-                console.log(currentUser)
+            console.log(currentUser)
                 .success(function(){
                 });
         }
@@ -176,20 +177,15 @@ angular.module('myApp.controllers', [])
 
 
         $http.post('/api/deleteoldstatuses/' + $routeParams.email)
-            .success(function(){
-            })
+            .success(function(){ /*** ***/})
 
         $scope.deletestatus = function(status){
-
+            $http.post('/api/deletestatus/' + $routeParams.email, status)
+                .success(function(){
+                    console.log("slettet");
+                    $route.reload();
+                });
         }
-
-        // stokker bokstavene rundt omkring
-        $(function(){
-            var container = $(".shuffleletters");
-            setTimeout(function(){
-                container.shuffleLetters();
-            },0);
-        });
     })
 
     .controller('AddStatusCtrl', function($scope, $http, $location, $rootScope){
