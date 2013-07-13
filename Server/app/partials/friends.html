@@ -1,14 +1,15 @@
 
 
+
 <div id="friendswrapper">
     <div class="friendsmainheader">
         <div class="friendssuperheader">
             <div ng-click="openFriend(currentUser)" class="userinfriendslistwrapper">
-                <h4 class="userinfriendslist"><strong> <i class="icon-home"></i> {{ currentUser.name }}</strong></h4>
+                <h4 class="userinfriendslist"><strong> <i class="icon-home"></i> <span class="shuffleletters"> {{ currentUser.name }} </span></strong></h4>
             </div>
             <div class="addfriendbuttoncontainer">
-                <a class="addfriend" ng-click="on()" ng-hide="showButton()"><button class="btn-danger btn btn-small">Add friend</button></a>
-                <a class="addfriend" ng-click="off()" ng-show="showButton()"><button class="btn-danger btn btn-small">Hide</button></a>
+                <a class="addfriend" ng-click="on()" ng-hide="showButton()"><button class="btn-success btn btn-small"><span class="shuffleletters"> Add friend</span></button></a>
+                <a class="addfriend" ng-click="off()" ng-show="showButton()"><button class="btn-success btn btn-small">Hide</button></a>
             </div>
         </div>
     </div>
@@ -16,7 +17,7 @@
     <div class="input-append" ng-show="showButton()">
         <input type="text" ng-model="friend.friendemail" placeholder="Friend's email ..." class="span2">
 
-        <a href="#/friends"><button class="btn btn-success" ng-click="[addFriend(), off()]" ng-click="off()">Add Friend</button></a>
+        <a href="#/friends"><button class="btn btn-success" ng-click="addFriend()">Add Friend</button></a>
     </div>
 
     <div ng-repeat="friend in friends" class="friendwrapper" ng-click="openFriend(friend); seen(friend)">
@@ -34,3 +35,5 @@
     </div>
 
 </div>
+
+

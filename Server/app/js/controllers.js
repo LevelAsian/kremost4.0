@@ -5,8 +5,18 @@ var hasreloaded = false;
 angular.module('myApp.controllers', [])
 
     .controller('FriendsCtrl', function($scope, $http, $location, $rootScope, $route) {
-
         var currentUser = $rootScope.GlobalCurrentUser;
+
+        $scope.friend = {};
+        $scope.friend.CurrentUserMail = currentUser.email;
+
+        // stokker bokstavene rundt omkring
+        $(function(){
+            var container = $(".shuffleletters");
+            setTimeout(function(){
+                container.shuffleLetters();
+            },0);
+        });
 
         // reloaded for å fikse bug.
         if(!hasreloaded){
@@ -67,6 +77,34 @@ angular.module('myApp.controllers', [])
                 $route.reload()
             }
 
+            $scope.addFriend = function() {
+
+                $http.get('api/queryforusers/' + $scope.friend.friendemail ).
+                    success(function(data){
+                        if($scope.friend.friendemail == currentUser.email){
+                            $scope.test = "Cannot add yourself as a friend!";
+                        } else{
+                            $http.get('/api/updatefriendlist/' + currentUser.email).
+                                success(function(User) {
+                                    currentUser.friends = User.friends;
+                                    if(currentUser.friends.indexOf($scope.friend.friendemail) == -1){
+
+                                        $http.post('/api/addfriend/', $scope.friend)
+                                            .success(function(){
+                                                $scope.text = "friend request sent";
+                                            });
+                                    } else {
+                                        $scope.text = $scope.friend.friendemail + " is already your friend";
+                                    }
+                                });
+
+                        }
+                    })
+                $scope.friend.friendemail = "";
+            }
+
+
+
         // Add friend...
         var show = false;
 
@@ -101,18 +139,24 @@ angular.module('myApp.controllers', [])
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
+        // stokker bokstavene rundt omkring
+        $(function(){
+            var container = $(".shuffleletters");
+            setTimeout(function(){
+                container.shuffleLetters();
+            },0);
+        });
+
         var currentUser = $rootScope.GlobalCurrentUser;
 
         $scope.friend = {};
 
         $http.get('/api/friend/' + $routeParams.email).
             success(function(data) {
-                console.log(data.seen)
                 $scope.friend.name = data.name;
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
-
                 $scope.friend.seen = data.seen;
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
@@ -149,10 +193,27 @@ angular.module('myApp.controllers', [])
             .success(function(){
             })
 
+        $scope.deletestatus = function(status){
 
+        }
+
+        // stokker bokstavene rundt omkring
+        $(function(){
+            var container = $(".shuffleletters");
+            setTimeout(function(){
+                container.shuffleLetters();
+            },0);
+        });
     })
 
     .controller('AddStatusCtrl', function($scope, $http, $location, $rootScope){
+        // stokker bokstavene rundt omkring
+        $(function(){
+            var container = $(".shuffleletters");
+            setTimeout(function(){
+                container.shuffleLetters();
+            },0);
+        });
         var currentUser = $rootScope.GlobalCurrentUser;
         $scope.status = {};
         $scope.status.email = currentUser.email;
@@ -167,42 +228,5 @@ angular.module('myApp.controllers', [])
     })
 
 
-    .controller('AddFriendCtrl', function($scope, $location, $http, $rootScope){
-        var currentUser = $rootScope.GlobalCurrentUser;
-
-        $scope.friend = {};
-        $scope.friend.CurrentUserMail = currentUser.email;
-
-        $scope.test = "";
-
-
-
-        $scope.addFriend = function() {
-
-
-
-            $http.get('api/queryforusers/' + $scope.friend.friendemail ).
-                success(function(data){
-                    if($scope.friend.friendemail == currentUser.email){
-                        $scope.test = "Cannot add yourself as a friend!";
-                    } else{
-                        $http.get('/api/updatefriendlist/' + currentUser.email).
-                            success(function(User) {
-                                currentUser.friends = User.friends;
-                                if(currentUser.friends.indexOf($scope.friend.friendemail) === -1){
-
-                                    $http.post('/api/addfriend/', $scope.friend)
-                                        .success(function(){
-                                            $scope.text = "friend request sent";
-                                        });
-                                } else {
-                                    $scope.text = $scope.friend.friendemail + " is already your friend";
-                                }
-                            });
-
-                    }
-                })
-        }
-    });
 
 

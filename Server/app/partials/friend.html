@@ -29,13 +29,17 @@
     <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
 
 
+
         <h4 class= "statusadder">{{status.text}}</h4>
         <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}
             <br>
 
             seen by:
-            <penis ng-repeat="seen in friend.seen | seenFilter: statusmodel:status" />
+            <pikk ng-repeat="seen in friend.seen | seenFilter: statusmodel:status" >
             {{seen.seenBy}},
+                </pikk>
+
+
 
 
         </small>
