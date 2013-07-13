@@ -10,7 +10,7 @@
 
 
 
-    <div ng-repeat="friend in friends" class="friendwrapper" ng-click="openFriend(friend)">
+    <div ng-repeat="friend in friends" class="friendwrapper" ng-click="openFriend(friend); seen(friend)">
         <div class="friendcontainer">
             <h6><i class="icon-user"></i> {{  friend.name }} </h6>
         </div>

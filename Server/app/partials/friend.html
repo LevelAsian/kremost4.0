@@ -32,7 +32,12 @@
         <h4 class= "statusadder">{{status.text}}</h4>
         <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}
             <br>
-        seen by: <div ng-repeat="seen in friend.seens"/>
+
+            seen by:
+            <penis ng-repeat="seen in friend.seen | seenFilter: statusmodel:status" />
+            {{seen.seenBy}}
+
+
         </small>
 
         <br>

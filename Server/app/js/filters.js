@@ -33,3 +33,20 @@ angular.module('myApp.filters', []).filter('StatusDateFilter', function() {
             return relatedComment
         }
     })
+
+    .filter('seenFilter', function() {
+        return function(seens, statusmodel, status){
+
+            var relatedSeen = []
+
+            seens.forEach(function(seen){
+
+
+                if(seen.statusSeen == status._id){
+                    console.log("samme")
+                    relatedSeen.push(seen);
+                }
+            })
+            return relatedSeen
+        }
+    })

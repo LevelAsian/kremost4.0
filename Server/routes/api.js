@@ -74,28 +74,7 @@ exports.addstatus = function(req, res){
 
 
 
-exports.comment = function(req, res){
-    var startdate = new Date();
 
-    console.log(req.body);
-
-    console.log('id: ' + req.body._id);
-    console.log('Status: ' + req.body.text);
-    console.log('New comment: ' +req.body.newcomment);
-    console.log('By: '+ req.body.commenter);
-    console.log('Date: ' +startdate);
-
-
-    User.update({'statuses._id': req.body._id}, { $push: {"comments": {
-            text: req.body.newcomment,
-            commentToStatus: req.body._id,
-            by: req.body.commenter,
-            added: startdate
-        }}},
-        function(err, docs){
-        }
-    )
-}
 
 
 exports.friend = function(req, res) {
@@ -177,7 +156,7 @@ exports.deleteoldstatuses = function(req, res){
                 // Her slettes statusene
                 User.update({email: user.email}, {$pull: {statuses:{_id:status._id}}}).exec();
                 User.update({email: user.email}, {$pull: {comments:{commentToStatus: status._id}}}).exec();
-            }else{
+                User.update({email: user.email}, {$pull: {seen: {statusSeen: status._id}}}).exec();
             }
         })
     });
@@ -185,9 +164,75 @@ exports.deleteoldstatuses = function(req, res){
 }
 
 
+exports.comment = function(req, res){
+    var startdate = new Date();
+
+    console.log(req.body);
+
+    console.log('id: ' + req.body._id);
+    console.log('Status: ' + req.body.text);
+    console.log('New comment: ' +req.body.newcomment);
+    console.log('By: '+ req.body.commenter);
+    console.log('Date: ' +startdate);
+
+
+    User.update({'statuses._id': req.body._id}, { $push: {"comments": {
+            text: req.body.newcomment,
+            commentToStatus: req.body._id,
+            by: req.body.commenter,
+            added: startdate
+        }}},
+        function(err, docs){
+        }
+    )
+}
+
+exports.seen = function(req, res){
+ //HAHA GØY, BREAK FUNKER IKKE I FOREACHLOOPS
+
+
+    console.log(req.body.statuses[0].text)
+
+    outerloop: for(var i= 0; i < req.body.statuses.length; i++){
+
+        console.log("i: " + i)
+        console.log("statusSeen: " + req.body.statuses[i]._id)
+
+
+            if(req.body.seen.length == 0){
+                console.log("den er tom!")
+                User.update({'email': req.body.email}, {$addToSet: {"seen": {
+
+                    seenBy: req.body.watcher,
+                    statusSeen: req.body.statuses[i]._id
 
 
 
+                }}}, function(err, docs){})
+
+            }
+            else{
+                for(var j=0; j<req.body.seen.length; j++){
+                    if(req.body.seen[j].statusSeen == req.body.statuses[i]._id){
+                        console.log(req.body.statuses[i]._id + " allerede sett!")
+                        continue outerloop;
+                    }
+                }
+
+            }
+
+
+            if(req.body.seen.length != 0){
+                User.update({'email': req.body.email}, {$addToSet: {"seen": {
+
+                    seenBy: req.body.watcher,
+                    statusSeen: req.body.statuses[i]._id
+
+                }}}, function(err, docs){})
+            }
+
+    }
+}
 
 
 

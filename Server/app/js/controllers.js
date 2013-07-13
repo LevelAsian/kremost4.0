@@ -66,6 +66,17 @@ angular.module('myApp.controllers', [])
                     })
                 $route.reload()
             }
+
+
+        $scope.seen = function(friend){
+
+            friend.watcher = currentUser.name;
+
+            $http.post('/api/seen/', friend)
+                .success(function(){
+                    console.log("Seen success");
+                });
+        }
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
@@ -75,11 +86,13 @@ angular.module('myApp.controllers', [])
 
         $http.get('/api/friend/' + $routeParams.email).
             success(function(data) {
+                console.log(data.seen)
                 $scope.friend.name = data.name;
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
-                //$scope.friend.seens = data.seen;
+                $scope.friend.seen = data.seen;
+
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
                 }else{
@@ -95,12 +108,6 @@ angular.module('myApp.controllers', [])
             }
         }
 
-        $scope.seen = function(){
-            $http.post('/api/seen/', currentUser)
-                console.log(currentUser)
-                .success(function(){
-                });
-        }
 
 
         $scope.comment = function(status) {
