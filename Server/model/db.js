@@ -4,9 +4,9 @@ var mongoose = require('mongoose')
     , SALT_WORK_FACTOR = 10;
 
 
-mongoose.connect('mongodb://localhost/patch5')
+//mongoose.connect('mongodb://localhost/patch')
 
-//mongoose.connect('mongodb://admin:admin@ds035358.mongolab.com:35358/heroku_app16830375');
+mongoose.connect('mongodb://admin:admin@ds035358.mongolab.com:35358/heroku_app16898974');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
@@ -33,7 +33,7 @@ var userSchema = mongoose.Schema({
     }],
     seen: [{
         seenBy: String,
-        statusSeen: {type: String, index: {unique: true}}
+        statusSeen: String
     }]
 });
 
