@@ -10,7 +10,6 @@
                 <ul class="dropdown-menu">
                     <li class="disabled" ><a href="">email: {{GlobalCurrentUser.email}}</a></li>
                     <li><a href="/logout">Logout</a></li>
-                    <li class="disabled" >Settings</li>
                 </ul>
             </div>
 
@@ -22,14 +21,18 @@
                     <li class="disabled" ><a href="">Request update</a></li>
                 </ul>
             </div>
+
+
         </div>
     </div>
     <hr>
+
     <!-- orderBy: sorterer baklengs etter dato -->
     <div ng-repeat="status in friend.statuses | StatusDateFilter | orderBy:'startdate':true" ng-model="statusmodel">
 
 
         <h4 class= "statusadder">{{status.text}}</h4>
+
         <small>added: {{status.startdate | date:'H:mm'}}, expires: {{status.enddate | date:'H:mm'}}
             <br>
 
@@ -40,7 +43,7 @@
 
         </small>
 
-        <br>
+
         <br>
 
         <div ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">

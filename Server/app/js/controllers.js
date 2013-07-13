@@ -76,6 +76,13 @@ angular.module('myApp.controllers', [])
                 .success(function(){
                     console.log("Seen success");
                 });
+
+            console.log("hei")
+            console.log(friend.watcher)
+            console.log("ser på")
+            console.log(friend.name)
+
+
         }
     })
 
@@ -91,8 +98,8 @@ angular.module('myApp.controllers', [])
                 $scope.friend.statuses = data.statuses;
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
-                $scope.friend.seen = data.seen;
 
+                //$scope.friend.seen = data.seen;
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
                 }else{
