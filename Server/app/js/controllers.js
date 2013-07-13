@@ -7,8 +7,6 @@ angular.module('myApp.controllers', [])
     .controller('FriendsCtrl', function($scope, $http, $location, $rootScope, $route) {
         var currentUser = $rootScope.GlobalCurrentUser;
 
-        $scope.friend = {};
-        $scope.friend.CurrentUserMail = currentUser.email;
 
         // stokker bokstavene rundt omkring
         $(function(){
@@ -76,9 +74,10 @@ angular.module('myApp.controllers', [])
                     })
                 $route.reload()
             }
+        $scope.friend = {};
+        $scope.friend.CurrentUserMail = currentUser.email;
 
-            $scope.addFriend = function() {
-
+        $scope.addFriend = function() {
                 $http.get('api/queryforusers/' + $scope.friend.friendemail ).
                     success(function(data){
                         if($scope.friend.friendemail == currentUser.email){
@@ -91,40 +90,25 @@ angular.module('myApp.controllers', [])
 
                                         $http.post('/api/addfriend/', $scope.friend)
                                             .success(function(){
-                                                $scope.text = "Friend request sent";
+                                                $scope.text = "friend request sent";
+
                                             });
+                                        $scope.friend.friendemail = "";
                                     } else {
                                         $scope.text = $scope.friend.friendemail + " is already your friend";
                                     }
                                 });
 
+
                         }
+
                     })
-                $scope.friend.friendemail = "";
             }
 
 
 
-        // Add friend...
-        var show = false;
 
-        $scope.on = function(){
-            show = true;
-        }
 
-        $scope.off = function(){
-            show = false;
-            $scope.friend.friendemail = null;
-        }
-
-        $scope.showButton = function(){
-            return show;
-        }
-
-        $scope.friend = {};
-        $scope.friend.CurrentUserMail = currentUser.email;
-
-        $scope.test = "";
 
         $scope.seen = function(friend){
 

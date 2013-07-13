@@ -12,6 +12,14 @@
     </div>
 
 
+        <h4><a ng-click="showDetails = ! showDetails" ng-hide="showDetails"><button class="btn btn-success">Add friend</button></a></h4>
+        <div ng-show="showDetails">
+            <div class="input-append">
+                <input type="text" ng-model="friend.friendemail" placeholder="Friend's email ..." class="span2">
+
+                <a href="#/friends"><button class="btn btn-success" ng-click="addFriend()">Add friend</button></a>
+            </div>
+        </div>
 
 
     <div ng-repeat="friend in friends" class="friendwrapper" ng-click="openFriend(friend); seen(friend)">

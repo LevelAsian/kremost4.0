@@ -4,9 +4,9 @@ var mongoose = require('mongoose')
     , SALT_WORK_FACTOR = 10;
 
 
-//mongoose.connect('mongodb://localhost/patch')
+//mongoose.connect('mongodb://localhost/patch3')
 
-mongoose.connect('mongodb://admin:admin@ds035358.mongolab.com:35358/heroku_app16898974');
+mongoose.connect('mongodb://admin:admin@ds035488.mongolab.com:35488/heroku_app16899370');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
