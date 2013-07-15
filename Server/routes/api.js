@@ -63,13 +63,19 @@ exports.addstatus = function(req, res){
     var enddate = new Date(startdate.getTime() + (16*60*60*1000));
 
     console.log("stardate api: " + startdate.getTime());
-    console.log(req.body.status);
+
+
+    for(var i=0; i < req.body.friends.length; i++){
+        User.update({'email': req.body.friends[i]}, {$addToSet: {"newStatus": req.body.email}},
+            function(err, docs){})
+    }
 
 
 
     User.update({email: req.body.email}, {$push: {"statuses": {text: req.body.text, startdate: startdate, enddate: enddate}}}, function(err, docs){
         res.send(docs);
     });
+
 }
 
 
@@ -182,15 +188,6 @@ exports.deletefriend = function(req, res){
 exports.comment = function(req, res){
     var startdate = new Date();
 
-    console.log(req.body);
-
-    console.log('id: ' + req.body._id);
-    console.log('Status: ' + req.body.text);
-    console.log('New comment: ' +req.body.newcomment);
-    console.log('By: '+ req.body.commenter);
-    console.log('Date: ' +startdate);
-
-
     User.update({'statuses._id': req.body._id}, { $push: {"comments": {
             text: req.body.newcomment,
             commentToStatus: req.body._id,
@@ -246,7 +243,19 @@ exports.seen = function(req, res){
     }
 }
 
+exports.newStatuses = function(req,res){
+    User.findOne({email: req.params.email}, function(err, docs) {
+        res.send(docs.newStatus);
+    });
 
+}
+
+exports.removeNewStatus = function(req, res){
+
+    console.log(req.body)
+    User.update({email: req.body.email}, {$pull: {newStatus: req.body.clicksOn}}, false, true)
+
+}
 
 
 

@@ -51,3 +51,19 @@ angular.module('myApp.filters', [])
             return relatedSeen
         }
     })
+
+    .filter('newStatusFilter', function(){
+        return function(newStatuses, friendmodel, friend){
+
+            var newStatusarray = []
+
+
+           newStatuses.forEach(function(newStatus){
+               if(newStatus == friend.email){
+                   newStatusarray.push(newStatus)
+               }
+           })
+
+            return newStatusarray
+        }
+    })

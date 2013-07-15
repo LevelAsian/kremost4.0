@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
     , SALT_WORK_FACTOR = 10;
 
 
-//mongoose.connect('mongodb://localhost/patch3')
+//mongoose.connect('mongodb://localhost/patch2')
 
 mongoose.connect('mongodb://admin:admin@ds035488.mongolab.com:35488/heroku_app16899370');
 var db = mongoose.connection;
@@ -34,7 +34,8 @@ var userSchema = mongoose.Schema({
     seen: [{
         seenBy: String,
         statusSeen: String
-    }]
+    }],
+    newStatus: [] //venn med ny status
 });
 
 // Bcrypt middleware
