@@ -41,13 +41,19 @@
             {{seen.seenBy}},
                 </pikk>
 
+        </small>
+        <br>
+        <small>
 
-
+            liked by:
+            <pikk ng-repeat="like in friend.likes | likesFilter: statusmodel:status">
+                {{like.by}},
+            </pikk>
 
         </small>
-
+         <br>
         <br>
-        <br>
+        <button class="btn btn-mini btn-success" ng-click="like(status)">Like</button>
 
         <div ng-repeat="comment in friend.comments | commentFilter: statusmodel:status">
 
@@ -55,13 +61,14 @@
                 <br>
                 <small>{{comment.added | date:'H:mm'}}</small></p>
         </div>
-
-        <h4><a ng-click="showDetails = ! showDetails" ng-hide="showDetails"><button class="btn btn-mini btn-success">comment</button></a></h4>
+        <br>
+        <h4><a ng-click="showDetails = ! showDetails" ng-hide="showDetails"><button class="btn btn-mini btn-success">Comment</button></a></h4>
         <div ng-show="showDetails">
             <div class="input-append">
                 <input type="text" ng-model="status.newcomment" placeholder="Write a comment..." class="span2">
 
                 <button class="btn btn-success" ng-click="comment(status)">Comment</button>
+
             </div>
         </div>
 

@@ -51,3 +51,17 @@ angular.module('myApp.filters', [])
             return relatedSeen
         }
     })
+
+    .filter('likesFilter', function() {
+        return function(likes, statusmodel, status){
+
+            var statusLikes = [];
+            likes.forEach(function(like){
+                if(like.likesToStatus == status._id){
+                    statusLikes.push(like)
+                }
+            })
+            return statusLikes;
+
+        }
+    })

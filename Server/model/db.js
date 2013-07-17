@@ -6,7 +6,7 @@ var mongoose = require('mongoose')
 
 //mongoose.connect('mongodb://localhost/patch3')
 
-mongoose.connect('mongodb://admin:admin@ds035488.mongolab.com:35488/heroku_app16899370');
+mongoose.connect('mongodb://localhost/patch');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
@@ -34,6 +34,10 @@ var userSchema = mongoose.Schema({
     seen: [{
         seenBy: String,
         statusSeen: String
+    }],
+    likes: [{
+        likesToStatus: String,
+        by: String
     }]
 });
 

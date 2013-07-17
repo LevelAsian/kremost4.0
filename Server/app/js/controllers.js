@@ -142,6 +142,7 @@ angular.module('myApp.controllers', [])
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
                 $scope.friend.seen = data.seen;
+                $scope.friend.likes = data.likes;
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
                 }else{
@@ -169,6 +170,25 @@ angular.module('myApp.controllers', [])
             $route.reload()
 
             status.newcomment= "";
+        }
+
+        $scope.like = function(status){
+            console.log("FRIEND!!!")
+            console.log($scope.friend.likes);
+
+            status.likearray = $scope.friend.likes
+            status.liker = currentUser.name;
+            console.log('status');
+            console.log(status);
+            $http.post('/api/likes/', status)
+                .success(function() {
+                    $location.path('/');
+                });
+            $route.reload()
+
+
+
+
         }
 
 
