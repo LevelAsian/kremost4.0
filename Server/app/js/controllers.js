@@ -24,6 +24,7 @@ angular.module('myApp.controllers', [])
             $scope.currentUser = currentUser;
 
 
+
             $http.get('/api/friends/' + currentUser.email).
                 success(function(friends) {
                     $scope.friends = friends;
@@ -31,6 +32,8 @@ angular.module('myApp.controllers', [])
             $scope.openFriend = function(friend) {
                 $location.path('/friend/' + friend.email);
             };
+
+
 
 
             $http.get('/api/friend_requests/' + currentUser.email).
@@ -113,16 +116,27 @@ angular.module('myApp.controllers', [])
         $scope.seen = function(friend){
 
             friend.watcher = currentUser.name;
+            currentUser.clicksOn = friend.email
 
             $http.post('/api/seen/', friend)
                 .success(function(){
-                    console.log("Seen success");
+                });
+
+            $http.post('/api/removeNewStatus/', currentUser)
+                .success(function(){
                 });
 
         }
+
+
+        $http.get('api/newStatuses/' + currentUser.email).
+            success(function(data){
+                $scope.newStatuses = data;
+
+            })
     })
 
-    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
+    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route, $location) {
         // stokker bokstavene rundt omkring
         $(function(){
             var container = $(".shuffleletters");
@@ -197,11 +211,20 @@ angular.module('myApp.controllers', [])
             .success(function(){
             })
 
-        $scope.deletestatus = function(status){
+        $scope.friend.currentUserEmail = currentUser.email;
+        $scope.deletefriend = function(){
+            $http.post('/api/deletefriend', $scope.friend)
+                .success(function(){
+                    $location.path('/');
+                });
+        };
 
-        }
+        $http.post('/api/deletestatus/' + $routeParams.email, status)
+            .success(function(){
+                $route.reload();
+            });
 
-        // stokker bokstavene rundt omkring
+// stokker bokstavene rundt omkring
         $(function(){
             var container = $(".shuffleletters");
             setTimeout(function(){
@@ -221,6 +244,7 @@ angular.module('myApp.controllers', [])
         var currentUser = $rootScope.GlobalCurrentUser;
         $scope.status = {};
         $scope.status.email = currentUser.email;
+        $scope.status.friends = currentUser.friends;
 
         $scope.addStatus = function() {
             $http.post('/api/addstatus/', $scope.status)

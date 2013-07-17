@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
     , SALT_WORK_FACTOR = 10;
 
 
-//mongoose.connect('mongodb://localhost/patch3')
+//mongoose.connect('mongodb://localhost/patch2')
 
 mongoose.connect('mongodb://localhost/patch');
 var db = mongoose.connection;
@@ -38,7 +38,8 @@ var userSchema = mongoose.Schema({
     likes: [{
         likesToStatus: String,
         by: String
-    }]
+    }],
+    newStatus: [] //venn med ny status
 });
 
 // Bcrypt middleware

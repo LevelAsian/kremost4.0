@@ -95,12 +95,12 @@ app.post('/api/acceptRequest/', api.acceptRequest);
 app.post('/api/declineRequest/', api.declineRequest);
 app.post('/api/deleteoldstatuses/:email', api.deleteoldstatuses);
 
+
 app.post('/api/seen', api.seen);
 app.post('/api/likes', api.likes);
-
-
 app.post('/api/deletestatus/:email', api.deletestatus);
 app.post('/api/deletefriend', api.deletefriend);
+app.post('/api/removeNewStatus/', api.removeNewStatus);
 
 app.get('/api/GetOneUser/:email', api.GetOneUser);
 app.get('/api/friends/:email', api.friends);
@@ -108,6 +108,7 @@ app.get('/api/friend/:email', api.friend);
 app.get('/api/updatefriendlist/:email', api.updatefriendlist);
 app.get('/api/queryforusers/:email', api.queryforusers);
 app.get('/api/friend_requests/:email', api.friend_requests);
+app.get('/api/newStatuses/:email', api.newStatuses)
 
 app.get('/getUser', function(req, res){
     User.findById(req.session.passport.user, function (err, user) {
