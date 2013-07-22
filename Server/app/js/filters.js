@@ -52,6 +52,21 @@ angular.module('myApp.filters', [])
         }
     })
 
+
+    .filter('likesFilter', function() {
+        return function(likes, statusmodel, status){
+
+            var statusLikes = [];
+            likes.forEach(function(like){
+                if(like.likesToStatus == status._id){
+                    statusLikes.push(like)
+                }
+            })
+            return statusLikes;
+        }
+    })
+
+
     .filter('newStatusFilter', function(){
         return function(newStatuses, friendmodel, friend){
 

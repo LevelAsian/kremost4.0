@@ -210,8 +210,48 @@ exports.comment = function(req, res){
     )
 }
 
+exports.likes = function(req, res) {
+
+    console.log(req.body);
+    console.log(req.body._id);
+    console.log(req.body.liker)
+
+        if(req.body.likearray.length == 0){
+            console.log('like lista er tom')
+            User.update({'statuses._id' : req.body._id}, { $push: {"likes": {
+                    likesToStatus: req.body._id,
+                    by: req.body.liker
+                }}},
+                function(err, docs){
+                }
+            )
+        }
+        else {
+            for (var j=0; j<req.body.likearray.length; j++){
+                if(req.body.likearray[j].by == req.body.liker && req.body.likearray[j].likesToStatus == req.body._id){
+                    console.log('liken finnes allerede');
+                    return;
+
+                }
+            }
+            User.update({'statuses._id' : req.body._id}, { $push: {"likes": {
+                    likesToStatus: req.body._id,
+                    by: req.body.liker
+                }}},
+                function(err, docs){
+                }
+            )
+        }
+
+
+
+
+
+}
+
 exports.seen = function(req, res){
  //HAHA GØY, BREAK FUNKER IKKE I FOREACHLOOPS
+
 
     outerloop: for(var i= 0; i < req.body.statuses.length; i++){
 

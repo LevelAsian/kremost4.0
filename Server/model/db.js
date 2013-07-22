@@ -6,7 +6,11 @@ var mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost/penis')
 
+<<<<<<< HEAD
 //mongoose.connect('mongodb://admin:admin@ds035488.mongolab.com:35488/heroku_app16899370');
+=======
+mongoose.connect('mongodb://localhost/patch');
+>>>>>>> 0a1eb194a790893cef4bdd5ea379bf3fc18bfcaa
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
@@ -35,8 +39,16 @@ var userSchema = mongoose.Schema({
         seenBy: String,
         statusSeen: String
     }],
+<<<<<<< HEAD
     newStatus: [], //venn med ny status
     updateRequests: []
+=======
+    likes: [{
+        likesToStatus: String,
+        by: String
+    }],
+    newStatus: [] //venn med ny status
+>>>>>>> 0a1eb194a790893cef4bdd5ea379bf3fc18bfcaa
 });
 
 // Bcrypt middleware

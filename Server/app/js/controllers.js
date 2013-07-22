@@ -149,7 +149,7 @@ angular.module('myApp.controllers', [])
 
     })
 
-    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {
+    .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route, $location) {
         // stokker bokstavene rundt omkring
         $(function(){
             var container = $(".shuffleletters");
@@ -169,6 +169,7 @@ angular.module('myApp.controllers', [])
                 $scope.friend.comments = data.comments;
                 $scope.friend.email = data.email;
                 $scope.friend.seen = data.seen;
+                $scope.friend.likes = data.likes;
                 if(data.email==currentUser.email){
                     $scope.checkuser = true;
                 }else{
@@ -198,17 +199,45 @@ angular.module('myApp.controllers', [])
             status.newcomment= "";
         }
 
+        $scope.like = function(status){
+            console.log("FRIEND!!!")
+            console.log($scope.friend.likes);
+
+            status.likearray = $scope.friend.likes
+            status.liker = currentUser.name;
+            console.log('status');
+            console.log(status);
+            $http.post('/api/likes/', status)
+                .success(function() {
+                    $location.path('/');
+                });
+            $route.reload()
+
+
+
+
+        }
+
 
 
         $http.post('/api/deleteoldstatuses/' + $routeParams.email)
             .success(function(){
             })
 
-        $scope.deletestatus = function(status){
+        $scope.friend.currentUserEmail = currentUser.email;
+        $scope.deletefriend = function(){
+            $http.post('/api/deletefriend', $scope.friend)
+                .success(function(){
+                    $location.path('/');
+                });
+        };
 
-        }
+        $http.post('/api/deletestatus/' + $routeParams.email, status)
+            .success(function(){
+                $route.reload();
+            });
 
-        // stokker bokstavene rundt omkring
+// stokker bokstavene rundt omkring
         $(function(){
             var container = $(".shuffleletters");
             setTimeout(function(){
