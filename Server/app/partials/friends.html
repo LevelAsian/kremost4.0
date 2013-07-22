@@ -6,6 +6,10 @@
         <div class="friendssuperheader">
             <div ng-click="openFriend(currentUser)" class="userinfriendslistwrapper">
                 <h4 class="userinfriendslist"><strong> <i class="icon-home"></i> <span class="shuffleletters"> {{ currentUser.name }} </span></strong></h4>
+
+            </div>
+            <div ng-repeat="requester in updateRequests" ng-click="openFriend(requester)">
+                <h7>{{ requester.name }} ,<h7>
             </div>
 
         </div>
@@ -25,6 +29,7 @@
     <div ng-repeat="friend in friends" class="friendwrapper" ng-click="openFriend(friend); seen(friend)">
         <div class="friendcontainer">
             <h6><i class="icon-user"></i> {{  friend.name }}  </h6>
+            <button class="btn btn-danger" ng-click="requestUpdate(friend)">Washera?</button>
             <pikk ng-repeat="newStatus in newStatuses | newStatusFilter: friendmodel:friend ">
 
                 <font color="red">New patch!</font>

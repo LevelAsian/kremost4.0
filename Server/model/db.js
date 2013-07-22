@@ -4,9 +4,9 @@ var mongoose = require('mongoose')
     , SALT_WORK_FACTOR = 10;
 
 
-//mongoose.connect('mongodb://localhost/patch2')
+mongoose.connect('mongodb://localhost/penis')
 
-mongoose.connect('mongodb://admin:admin@ds035488.mongolab.com:35488/heroku_app16899370');
+//mongoose.connect('mongodb://admin:admin@ds035488.mongolab.com:35488/heroku_app16899370');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
@@ -35,7 +35,8 @@ var userSchema = mongoose.Schema({
         seenBy: String,
         statusSeen: String
     }],
-    newStatus: [] //venn med ny status
+    newStatus: [], //venn med ny status
+    updateRequests: []
 });
 
 // Bcrypt middleware

@@ -29,6 +29,11 @@ angular.module('myApp.controllers', [])
                 success(function(friends) {
                     $scope.friends = friends;
                 });
+
+            $http.get('/api/updateRequests/' + currentUser.email).
+                success(function(updateRequests) {
+                    $scope.updateRequests = updateRequests;
+                });
             $scope.openFriend = function(friend) {
                 $location.path('/friend/' + friend.email);
             };
@@ -134,6 +139,14 @@ angular.module('myApp.controllers', [])
                 $scope.newStatuses = data;
 
             })
+
+        $scope.requestUpdate = function(friend){
+            console.log(friend.name);
+            $http.post('/api/requestUpdate/' + friend.email, currentUser).success(function(){
+                console.log("hei");
+            })
+        }
+
     })
 
     .controller('FriendCtrl', function($scope, $routeParams, $http, $rootScope, $route) {

@@ -33,6 +33,13 @@ exports.updatefriendlist = function(req, res){
     });
 };
 
+exports.updateRequests = function(req, res){
+    User.findOne({email: req.params.email}, function (err, docs){
+        User.where('email').in(docs.updateRequests).exec (function(err2, updateRequests){
+            res.send(updateRequests)
+        })   ;
+    })        ;
+}              ;
 exports.friends = function(req, res) {
     User.findOne({email: req.params.email}, function(err, docs) {
         User.where('email').in(docs.friends).exec(function(err2, friends) {
@@ -75,6 +82,10 @@ exports.addstatus = function(req, res){
     User.update({email: req.body.email}, {$push: {"statuses": {text: req.body.text, startdate: startdate, enddate: enddate}}}, function(err, docs){
         res.send(docs);
     });
+
+    User.update({email: req.body.email}, {$set: {"updateRequests": []}}, function (err,docs){
+         res.send(docs);
+    })  ;
 
 }
 
@@ -256,7 +267,11 @@ exports.removeNewStatus = function(req, res){
     User.update({email: req.body.email}, {$pull: {newStatus: req.body.clicksOn}}, false, true)
 
 }
-
+exports.requestUpdate = function(req, res){
+    User.update({email: req.params.email}, {$addToSet: {updateRequests: req.body.email}},
+        function(err, docs){}
+    );
+}
 
 
 

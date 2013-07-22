@@ -98,9 +98,11 @@ app.post('/api/seen', api.seen)
 app.post('/api/deletestatus/:email', api.deletestatus);
 app.post('/api/deletefriend', api.deletefriend);
 app.post('/api/removeNewStatus/', api.removeNewStatus);
+app.post('/api/requestUpdate/:email', api.requestUpdate);
 
 app.get('/api/GetOneUser/:email', api.GetOneUser);
 app.get('/api/friends/:email', api.friends);
+app.get('/api/updateRequests/:email', api.updateRequests);
 app.get('/api/friend/:email', api.friend);
 app.get('/api/updatefriendlist/:email', api.updatefriendlist);
 app.get('/api/queryforusers/:email', api.queryforusers);
