@@ -6,7 +6,7 @@
     },
     "dependencies": {
         "mongoose":  "3.6.x",
-        "express":  "3.2.x",
+        "express": ">=3.11.0",
         "cors": "*",
         "aws-sdk": "*",
         "ejs": ">= 0.0.0",
